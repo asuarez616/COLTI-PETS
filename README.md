@@ -1,10 +1,3 @@
-# COLTI Configurator V1
-
-Fase 20.0: [correcciones UI y regresión](audits/COLTI-phase-20-ui-corrections-2026-10-02.md), con causas raíz, datos estructurados, fuentes reales y capturas reproducibles. Revisión manual pendiente antes de continuar.
-
-Bloque E (fases 17–19): [informe de rendimiento, responsive y accesibilidad](audits/COLTI-block-E-performance-responsive-accessibility-2026-10-02.md). Comparación reproducible: `node scripts/measure-performance.mjs` sobre la compilación local y `node scripts/report-block-e.mjs`; el JSON anterior conserva la referencia del Bloque D. Generación de assets: `scripts/optimize-images.py` (Pillow 12.3) y `scripts/optimize-fonts.py` (fontTools 4.66.1/Brotli 1.2), dependencias de generación. Las variantes remotas se usan solo tras publicar todas y marcar `responsive-v1`; el upload no se ejecutó en Supabase. Fuentes remotas antiguas mantienen sus rutas originales.
-
-Implementación de `COLTI_CONFIGURATOR_SPEC.md`: React/TypeScript/Vite, Supabase y exportación JPG/PDF. Sin precios, pagos, CRM, WhatsApp ni recomendación automática de talla.
 
 ## Probar localmente
 
