@@ -2,6 +2,7 @@
 node_modules/
 .pnpm-store/
 .asset-tools/
+.colti-runtime/
 
 # Build output and test artifacts
 dist/

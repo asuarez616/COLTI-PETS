@@ -1,7 +1,11 @@
 
 ## Probar localmente
 
-Requiere Node 22.12+ y pnpm 11.19 (fijado en packageManager). Ejecutar desde esta carpeta:
+Requiere Node 22.12 o posterior. En Windows, ejecuta `Start-COLTI.cmd`: instalará Node LTS si falta, preparará la versión de pnpm del proyecto, instalará las dependencias y levantará Store y Admin local. Store queda en `http://127.0.0.1:4176/`; Admin local en `http://127.0.0.1:4174/admin/orders`. Los registros y PID locales se guardan en `.colti-runtime/` (ignorado por Git). Para detener los procesos, ejecuta `Stop-COLTI.cmd`.
+
+El lanzador no reemplaza ni muestra credenciales. Si falta `.env.production.local`, Store arranca sin conexión Supabase y puede funcionar en modo Demo local; el Admin en `4174` es una vista previa local, no el panel de producción. Para conectar Supabase, consulta [Conectar Supabase](#conectar-supabase).
+
+También puedes iniciar solo el Store manualmente con Node 22.12+ y pnpm 11.19:
 
 ```sh
 pnpm install
