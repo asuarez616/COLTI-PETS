@@ -1,0 +1,269 @@
+{
+  "revision": 1,
+  "types": [
+    {
+      "key": "hanging",
+      "name_en": "Hanging",
+      "name_es": "Colgante",
+      "icon": "/icons/id-tag-hanging.svg",
+      "active": true,
+      "display_order": 0
+    },
+    {
+      "key": "anti_fall",
+      "name_en": "Anti-fall",
+      "name_es": "Anticaída",
+      "icon": "/icons/id-tag-anti-fall.svg",
+      "active": true,
+      "display_order": 1
+    }
+  ],
+  "hanging": [
+    {
+      "key": "paw",
+      "name_en": "Paw",
+      "name_es": "Huella",
+      "icon": "/icons/tag-paw.svg",
+      "active": true,
+      "display_order": 0,
+      "sizes": [
+        {
+          "id": "small",
+          "name_en": "Medium",
+          "name_es": "Mediana",
+          "width": 2.5,
+          "height": 2.5,
+          "active": true
+        },
+        {
+          "id": "large",
+          "name_en": "Large",
+          "name_es": "Grande",
+          "width": 3.5,
+          "height": 3.3,
+          "active": true
+        }
+      ]
+    },
+    {
+      "key": "circle",
+      "name_en": "Circle",
+      "name_es": "Círculo",
+      "icon": "/icons/tag-circle.svg",
+      "active": true,
+      "display_order": 1,
+      "sizes": [
+        {
+          "id": "small",
+          "name_en": "Medium",
+          "name_es": "Mediana",
+          "width": 2.5,
+          "height": 2.5,
+          "active": true
+        }
+      ]
+    },
+    {
+      "key": "bone",
+      "name_en": "Bone",
+      "name_es": "Hueso",
+      "icon": "/icons/tag-bone.svg",
+      "active": true,
+      "display_order": 2,
+      "sizes": [
+        {
+          "id": "miniature",
+          "name_en": "Miniature",
+          "name_es": "Miniatura",
+          "width": 2.3,
+          "height": 2,
+          "active": true
+        },
+        {
+          "id": "medium",
+          "name_en": "Medium",
+          "name_es": "Mediana",
+          "width": 2.7,
+          "height": 4,
+          "active": true
+        },
+        {
+          "id": "large",
+          "name_en": "Large",
+          "name_es": "Grande",
+          "width": 3,
+          "height": 5,
+          "active": true
+        }
+      ]
+    },
+    {
+      "key": "crown",
+      "name_en": "Crown",
+      "name_es": "Corona",
+      "icon": "/icons/id-tag-hanging.svg",
+      "active": false,
+      "display_order": 3,
+      "sizes": [
+        {
+          "id": "small",
+          "name_en": "Medium",
+          "name_es": "Mediana",
+          "width": 2.5,
+          "height": 2.5,
+          "active": true
+        }
+      ]
+    },
+    {
+      "key": "military",
+      "name_en": "Military",
+      "name_es": "Militar",
+      "icon": "/icons/tag-military.svg",
+      "active": true,
+      "display_order": 4,
+      "sizes": [
+        {
+          "id": "medium",
+          "name_en": "Medium",
+          "name_es": "Mediana",
+          "width": 2.7,
+          "height": 4,
+          "active": true
+        },
+        {
+          "id": "large",
+          "name_en": "Large",
+          "name_es": "Grande",
+          "width": 3,
+          "height": 5,
+          "active": true
+        }
+      ]
+    }
+  ],
+  "anti": [
+    {
+      "key": "micro",
+      "name_en": "Micro",
+      "name_es": "Micro",
+      "icon": "/icons/id-tag-anti-fall.svg",
+      "active": true,
+      "display_order": 0,
+      "width": 3,
+      "height": 1.2
+    },
+    {
+      "key": "miniature",
+      "name_en": "Miniature",
+      "name_es": "Miniatura",
+      "icon": "/icons/id-tag-anti-fall.svg",
+      "active": true,
+      "display_order": 1,
+      "width": 4,
+      "height": 1.5
+    },
+    {
+      "key": "small",
+      "name_en": "Small",
+      "name_es": "Pequeña",
+      "icon": "/icons/id-tag-anti-fall.svg",
+      "active": true,
+      "display_order": 2,
+      "width": 3.5,
+      "height": 2
+    },
+    {
+      "key": "semi_medium",
+      "name_en": "Semi Medium",
+      "name_es": "Semimediana",
+      "icon": "/icons/id-tag-anti-fall.svg",
+      "active": true,
+      "display_order": 3,
+      "width": 4.3,
+      "height": 2.2
+    },
+    {
+      "key": "medium",
+      "name_en": "Medium",
+      "name_es": "Mediana",
+      "icon": "/icons/id-tag-anti-fall.svg",
+      "active": true,
+      "display_order": 4,
+      "width": 5,
+      "height": 3
+    },
+    {
+      "key": "large",
+      "name_en": "Large",
+      "name_es": "Grande",
+      "icon": "/icons/id-tag-anti-fall.svg",
+      "active": true,
+      "display_order": 5,
+      "width": 6,
+      "height": 4
+    }
+  ],
+  "mapping": [
+    {
+      "size": "2XS",
+      "width": 1,
+      "model": "micro"
+    },
+    {
+      "size": "XS",
+      "width": 1,
+      "model": "miniature"
+    },
+    {
+      "size": "XS",
+      "width": 1.5,
+      "model": "small"
+    },
+    {
+      "size": "S",
+      "width": 1.5,
+      "model": "small"
+    },
+    {
+      "size": "S",
+      "width": 2,
+      "model": "semi_medium"
+    },
+    {
+      "size": "SM",
+      "width": 2,
+      "model": "semi_medium"
+    },
+    {
+      "size": "M",
+      "width": 2.5,
+      "model": "medium"
+    },
+    {
+      "size": "ML",
+      "width": 2.5,
+      "model": "medium"
+    },
+    {
+      "size": "ML",
+      "width": 3,
+      "model": "large"
+    },
+    {
+      "size": "L",
+      "width": 3,
+      "model": "large"
+    },
+    {
+      "size": "XL",
+      "width": 3,
+      "model": "large"
+    },
+    {
+      "size": "2XL",
+      "width": 3,
+      "model": "large"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+/* Touch hit areas: no changes to labels, card dimensions or visual identity. */
+.production-link{display:inline-flex;align-items:center;min-height:44px}
+.text-button{min-height:24px}
+.flow-actions>.text-button{min-height:44px}
+.modal-close,.design-preview-close,.lettering-close{min-width:44px;min-height:44px}
+@media(max-width:800px){
+ /* A shortened viewport/virtual keyboard can scroll normally to navigation. */
+ .big-input,.tag-extra-fields input,.tag-extra-fields textarea,.personality-notes textarea{scroll-margin-block:24px}
+ .flow-actions{scroll-margin-bottom:24px}
+}

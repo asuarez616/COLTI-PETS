@@ -1,0 +1,189 @@
+{
+  "editorial/0.png": {
+    "width": 1086,
+    "height": 1448,
+    "originalBytes": 2034211,
+    "variants": [
+      {
+        "file": "editorial/0-480.webp",
+        "width": 480,
+        "height": 640,
+        "bytes": 282180
+      },
+      {
+        "file": "editorial/0-800.webp",
+        "width": 800,
+        "height": 1067,
+        "bytes": 793560
+      },
+      {
+        "file": "editorial/0-1086.webp",
+        "width": 1086,
+        "height": 1448,
+        "bytes": 1383428
+      }
+    ]
+  },
+  "editorial/1.png": {
+    "width": 1092,
+    "height": 1440,
+    "originalBytes": 2091431,
+    "variants": [
+      {
+        "file": "editorial/1-480.webp",
+        "width": 480,
+        "height": 633,
+        "bytes": 286610
+      },
+      {
+        "file": "editorial/1-800.webp",
+        "width": 800,
+        "height": 1055,
+        "bytes": 799276
+      },
+      {
+        "file": "editorial/1-1092.webp",
+        "width": 1092,
+        "height": 1440,
+        "bytes": 1397738
+      }
+    ]
+  },
+  "editorial/2.png": {
+    "width": 1127,
+    "height": 1396,
+    "originalBytes": 2097260,
+    "variants": [
+      {
+        "file": "editorial/2-480.webp",
+        "width": 480,
+        "height": 595,
+        "bytes": 270454
+      },
+      {
+        "file": "editorial/2-800.webp",
+        "width": 800,
+        "height": 991,
+        "bytes": 761730
+      },
+      {
+        "file": "editorial/2-1127.webp",
+        "width": 1127,
+        "height": 1396,
+        "bytes": 1452604
+      }
+    ]
+  },
+  "editorial/3.png": {
+    "width": 1125,
+    "height": 1398,
+    "originalBytes": 1842815,
+    "variants": [
+      {
+        "file": "editorial/3-480.webp",
+        "width": 480,
+        "height": 596,
+        "bytes": 242420
+      },
+      {
+        "file": "editorial/3-800.webp",
+        "width": 800,
+        "height": 994,
+        "bytes": 691090
+      },
+      {
+        "file": "editorial/3-1125.webp",
+        "width": 1125,
+        "height": 1398,
+        "bytes": 1305446
+      }
+    ]
+  },
+  "editorial/4.png": {
+    "width": 1097,
+    "height": 1434,
+    "originalBytes": 1995842,
+    "variants": [
+      {
+        "file": "editorial/4-480.webp",
+        "width": 480,
+        "height": 627,
+        "bytes": 263800
+      },
+      {
+        "file": "editorial/4-800.webp",
+        "width": 800,
+        "height": 1046,
+        "bytes": 760244
+      },
+      {
+        "file": "editorial/4-1097.webp",
+        "width": 1097,
+        "height": 1434,
+        "bytes": 1369672
+      }
+    ]
+  },
+  "catalog/CH-17-1.png": {
+    "width": 1254,
+    "height": 1254,
+    "originalBytes": 3209921,
+    "variants": [
+      {
+        "file": "catalog/CH-17-1-240.webp",
+        "width": 240,
+        "height": 240,
+        "bytes": 87400
+      },
+      {
+        "file": "catalog/CH-17-1-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 314596
+      },
+      {
+        "file": "catalog/CH-17-1-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 793258
+      },
+      {
+        "file": "catalog/CH-17-1-1254.webp",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1698408
+      }
+    ]
+  },
+  "catalog/design-test-02.png": {
+    "width": 1254,
+    "height": 1254,
+    "originalBytes": 2644865,
+    "variants": [
+      {
+        "file": "catalog/design-test-02-240.webp",
+        "width": 240,
+        "height": 240,
+        "bytes": 77122
+      },
+      {
+        "file": "catalog/design-test-02-480.webp",
+        "width": 480,
+        "height": 480,
+        "bytes": 256422
+      },
+      {
+        "file": "catalog/design-test-02-800.webp",
+        "width": 800,
+        "height": 800,
+        "bytes": 635504
+      },
+      {
+        "file": "catalog/design-test-02-1254.webp",
+        "width": 1254,
+        "height": 1254,
+        "bytes": 1360004
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+project_id = "colti-configurator"
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+[db]
+port = 54322
+major_version = 15
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql", "./seed-fonts.sql"]
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://127.0.0.1:5173"]
+enable_anonymous_sign_ins = true
+[auth.email]
+enable_signup = false
+[functions.attachments]
+# Function verifies the user JWT with Auth, including newer publishable-key projects.
+verify_jwt = false

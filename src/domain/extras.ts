@@ -1,0 +1,7 @@
+import type {Item,Locale} from './model';
+export type ExtraCategory='address'|'health'|'neutered'|'family'|'phones'|'other';
+export interface TagExtras{selected:ExtraCategory[];address:string;health:string;neutered:string;familyName:string;familyPhone:string;phones?:string;other:string}
+export const extraLabels={en:{address:'Address',health:'Health info',neutered:'Spayed / Neutered',family:'Family contact',phones:'Additional phone numbers',other:'Other'},es:{address:'Dirección',health:'Información de salud',neutered:'Esterilización',family:'Contacto familiar',phones:'Teléfonos adicionales',other:'Otro'}};
+export function extrasFor(i:Pick<Item,'tagExtras'|'extra_text'>):TagExtras{return i.tagExtras||{selected:i.extra_text.trim()?['other']:[],address:'',health:'',neutered:'',familyName:'',familyPhone:'',other:i.extra_text};}
+export function extraEntries(i:Pick<Item,'tagExtras'|'extra_text'>,l:Locale){const x=extrasFor(i);const v={address:x.address,health:x.health,neutered:l==='es'?(({Spayed:'Esterilizada',Neutered:'Castrado'} as Record<string,string>)[x.neutered]||x.neutered):x.neutered,family:[x.familyName,x.familyPhone].filter(v=>v.trim()).join('\n'),phones:x.phones||'',other:x.other};return x.selected.filter(k=>v[k].trim()).map(k=>({key:k,label:extraLabels[l][k],value:v[k]}));}
+export function extraText(x:TagExtras){return extraEntries({tagExtras:x,extra_text:''},'en').map(e=>`${e.label}: ${e.value}`).join('\n');}

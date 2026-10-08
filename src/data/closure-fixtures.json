@@ -1,0 +1,5 @@
+[
+ {"key":"plastic_buckle","name_en":"Plastic Buckle","name_es":"Broche plástico","icon":"/icons/plastic-buckle.svg","active":true,"display_order":0,"revision":1,"preferences":{}},
+ {"key":"metal_buckle","name_en":"Metal Buckle","name_es":"Hebilla metálica","icon":"/icons/metal-buckle.svg","active":true,"display_order":1,"revision":1,"preferences":{}},
+ {"key":"martingale","name_en":"Martingale","name_es":"Martingale","icon":"/icons/martingale.svg","active":true,"display_order":2,"revision":1,"preferences":{}}
+]

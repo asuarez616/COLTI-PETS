@@ -1,0 +1,12 @@
+import {validClosureKey,sizes,validPair,type CollarType,type Item,type Locale} from './model';
+export interface Closure {key:CollarType;name_en:string;name_es:string;icon:string;active:boolean;display_order:number;revision:number;preferences:Record<string,{enabled:boolean;widths:Record<string,boolean>}>}
+export const closureName=(c:Closure,locale:Locale)=>locale==='es'?c.name_es:c.name_en;
+export const sizeEnabled=(c:Closure,size:string)=>c.preferences[size]?.enabled!==false;
+export const widthEnabled=(c:Closure,size:string,width:number)=>validPair(size,width)&&(sizes.find(s=>s.code===size)!.widths.length===1||c.preferences[size]?.widths[String(width)]!==false);
+export const closureAvailable=(c:Closure,size:string,width:number)=>c.active&&sizeEnabled(c,size)&&widthEnabled(c,size,width);
+export const availableClosures=(values:Closure[],size:string,width:number)=>values.filter(c=>closureAvailable(c,size,width)).sort((a,b)=>a.display_order-b.display_order||a.key.localeCompare(b.key));
+export const validClosure=(item:Item,values:Closure[])=>values.some(c=>c.key===item.collar_type&&closureAvailable(c,item.size_code,item.width_cm));
+export function setClosureSize(c:Closure,size:string,enabled:boolean):Closure{if(!sizes.some(s=>s.code===size))throw Error('INVALID_SIZE');return {...c,preferences:{...c.preferences,[size]:{enabled,widths:{...c.preferences[size]?.widths}}}};}
+export function setClosureWidth(c:Closure,size:string,width:number,enabled:boolean):Closure{if(!validPair(size,width)||sizes.find(s=>s.code===size)!.widths.length===1)throw Error('INVALID_WIDTH');return {...c,preferences:{...c.preferences,[size]:{enabled:sizeEnabled(c,size),widths:{...c.preferences[size]?.widths,[String(width)]:enabled}}}};}
+export function validateClosure(c:Closure){if(!validClosureKey(c.key)||!c.name_en.trim()||!c.name_es.trim()||c.name_en.length>100||c.name_es.length>100||!Number.isInteger(c.display_order)||c.display_order<0||c.display_order>100||!Number.isInteger(c.revision)||c.revision<0||typeof c.active!=='boolean'||!validClosureIcon(c.icon))throw Error('INVALID_CLOSURE');for(const [size,p] of Object.entries(c.preferences)){if(!sizes.some(s=>s.code===size)||typeof p.enabled!=='boolean')throw Error('INVALID_SIZE');for(const [width,enabled] of Object.entries(p.widths))if(!validPair(size,Number(width))||typeof enabled!=='boolean')throw Error('INVALID_WIDTH');}return c;}
+export const validClosureIcon=(icon:string)=>/^\/icons\/[a-z0-9-]+\.svg$/.test(icon)||/^closures\/uploads\/[a-f0-9-]+-\d+\.webp$/.test(icon);

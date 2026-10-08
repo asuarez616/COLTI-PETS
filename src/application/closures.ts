@@ -1,0 +1,3 @@
+import {validateClosure,type Closure} from '../domain/closures';
+export interface ClosureRepository {load():Promise<Closure[]>;create(value:Closure):Promise<Closure>;save(value:Closure):Promise<Closure>;remove?(key:string,revision:number):Promise<void>;uploadIcon(file:File):Promise<string>}
+export function closureApplication(repository:ClosureRepository){return {remove:(key:string,revision:number)=>{if(!repository.remove)throw Error('NOT_CONFIGURED');return repository.remove(key,revision);},load:()=>repository.load(),create:(value:Closure)=>repository.create(validateClosure(value)),save:(value:Closure)=>repository.save(validateClosure(value)),uploadIcon:(file:File)=>repository.uploadIcon(file)};}

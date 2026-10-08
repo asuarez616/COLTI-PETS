@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "groups": [
+    {
+      "folderId": "1kl4bkRVZu4xJvv_aD7lBbZDV-oxwsAKU",
+      "type": "printed",
+      "sizes": [
+        "2XS",
+        "XS",
+        "S",
+        "SM",
+        "M",
+        "ML",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "recursive": true
+    },
+    {
+      "folderId": "1A1XhfKK9duMxuDZPvgVO4uLc2mM6_nTV",
+      "type": "woven",
+      "sizes": [
+        "M",
+        "ML",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "recursive": true
+    },
+    {
+      "folderId": "11aiNhAZLc4L-FQ-8uvl81hgQ5sGlZP9v",
+      "type": "woven",
+      "sizes": [
+        "S",
+        "SM"
+      ],
+      "recursive": true
+    },
+    {
+      "folderId": "1mdSS9zxIFWMbfly4mby88zX5Ac7us4vh",
+      "type": "woven",
+      "sizes": [
+        "2XS",
+        "XS"
+      ],
+      "recursive": true
+    }
+  ],
+  "hero": {
+    "folderId": "16Q_3gKdcfWak3jq_yzw-byXmpxOFyBWy",
+    "recursive": false
+  }
+}

@@ -1,0 +1,38 @@
+/* Shared full-height editorial layout. */
+@media(min-width:801px){
+ #root{min-height:100dvh;display:flex;flex-direction:column}
+ main{flex:1;width:100%;min-height:calc(684px + 26px + 48px)}
+ .story{width:44%;padding:0;border:0;position:relative;align-self:stretch;height:auto;min-height:0;background:none}
+ .story .editorial-carousel{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;isolation:isolate;overflow:hidden;background:var(--brand-pink)}
+ .story .editorial-carousel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;opacity:0;transition:opacity 1s ease}.story .editorial-carousel>img.active{opacity:1}
+
+ .editorial-tint{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(62,24,48,.34),transparent 18%,transparent 62%,rgba(62,24,48,.74)),rgba(210,71,147,.1)}
+ .story .editorial-eyebrow{position:absolute;top:34px;left:7%;right:7%;color:var(--cream);margin:0;z-index:1;text-shadow:0 1px 8px #3e243466}
+ .story .story-copy{position:absolute;bottom:86px;left:7%;right:7%;width:auto;max-width:none;padding:0;margin:0;z-index:1;color:var(--cream)}
+ .story .story-copy h2{margin-bottom:16px}.story .story-copy em{color:var(--cream)}
+ .story .story-copy>p{color:var(--cream);max-width:390px;margin-bottom:0;text-shadow:0 1px 8px #3e243466}
+}
+
+/* Dynamic form content cannot size the editorial column or the document. */
+@media(min-width:801px){
+ #root:has(>.configurator-layout){height:100dvh;min-height:0;overflow:hidden}
+ #root:has(>.configurator-layout)>.site-header,
+ #root:has(>.configurator-layout)>footer,
+ #root:has(>.configurator-layout)>.environment-banner{flex-shrink:0}
+ main.configurator-layout{flex:1 1 0;min-height:0;width:100%;overflow:hidden}
+ .configurator-layout>.story{flex-shrink:0;min-width:0;min-height:0;height:100%;contain:layout paint}
+ .configurator-layout .editorial-carousel{transform:translateZ(0)}
+ .configurator-layout>.configurator-area{flex-shrink:0;min-width:0;min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-gutter:stable;overflow-anchor:none}
+}
+
+@media(prefers-reduced-motion:reduce){.story .editorial-carousel>img{transition:none}}
+
+
+
+/* Reserve the Step 9 height for every configurator step without stretching controls. */
+.flow{min-height:684px}
+@media(max-width:800px){.flow{min-height:632px}}
+
+
+
+

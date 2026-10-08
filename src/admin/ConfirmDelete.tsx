@@ -1,0 +1,3 @@
+export function ConfirmDelete({name,description,busy,error,cancel,confirm}:{name:string;description:string;busy:boolean;error?:string;cancel:()=>void;confirm:()=>void}){
+ return <dialog className="admin-cancel-dialog" ref={node=>{if(node&&!node.open)node.showModal();}} aria-label={'Delete '+name} onCancel={e=>{e.preventDefault();if(!busy)cancel();}}><h2>Delete {name}?</h2><p>{description}</p>{error&&<p className="admin-error" role="alert">{error}</p>}<div className="admin-controls"><button disabled={busy} onClick={cancel}>Cancel</button><button className="admin-primary" disabled={busy} onClick={confirm}>{busy?'Deleting…':'Delete'}</button></div></dialog>;
+}

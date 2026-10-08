@@ -1,0 +1,6 @@
+/* Measured intrinsic content height animates both disclosure and open-panel updates. */
+.reveal{overflow:hidden;opacity:0;visibility:hidden;transition:height var(--disclosure-duration) var(--disclosure-easing),opacity var(--disclosure-duration) ease,visibility 0s linear var(--disclosure-duration)}
+.reveal[data-open=true]{opacity:1;visibility:visible;transition-delay:0s}
+.reveal-content{display:flow-root;min-width:0}
+.reveal .personality-expanded,.reveal .tag-extra-fields{animation:none}
+@media(prefers-reduced-motion:reduce){.reveal{transition:none}}

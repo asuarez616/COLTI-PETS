@@ -1,0 +1,8 @@
+import {test,expect} from './fixture-catalog';
+for(const width of [390,834,1440])test('information rows remain legible and safely scaled '+width,async({page})=>{
+ await page.setViewportSize({width,height:1000});await page.goto('/');await page.evaluate(async()=>{const path='/src/domain/model.ts';const {blankDraft}=await import(path);const d=blankDraft();d.step='personalization';Object.assign(d.current,{tag_type:'anti_fall',pet_name:'Gina',font_number:9,personalization_type:'decoration',tag_phone:'+1 888 585 8616',decorationIcon:'heart',tagExtras:{selected:['address','health','neutered'],address:'Quito',health:'FENOBARBITAL DIARIO',neutered:'Spayed',familyName:'',familyPhone:'',other:''}});sessionStorage.setItem('colti-draft-v1',JSON.stringify(d));});await page.reload();
+ await expect(page.locator('.tag-detail-text').first()).toBeVisible();await page.evaluate(()=>document.fonts.ready);
+ await expect.poll(()=>page.locator('.tag-face-line').evaluateAll(rows=>rows.every(row=>{const box=row.getBoundingClientRect(),value=row.querySelector<HTMLElement>('.tag-detail-text')!,ink=value.getBoundingClientRect();const scale=new DOMMatrix(getComputedStyle(value).transform).a;const icon=row.querySelector('svg');return scale>=.89&&scale<=1.31&&ink.right<=box.right+1&&(!icon||Math.abs(icon.getBoundingClientRect().width-16)<.5);}))).toBe(true);
+ await expect(page.getByText('Long details: scroll inside the tag.',{exact:true})).toHaveCount(0);
+ await expect(page.locator('.tag-face-name .lettering-inline-decoration')).toBeVisible();
+});

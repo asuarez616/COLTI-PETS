@@ -1,0 +1,10 @@
+import {useEffect,useState,type FormEvent} from 'react';
+import {beginPasswordRecovery,finishPasswordRecovery} from '../data/passwordRecoveryBackend';
+import {validRecoveryPassword,passwordRecoveryError} from '../application/passwordRecovery';
+import './admin.css';
+export default function PasswordRecovery(){
+ const [ready,setReady]=useState(false),[error,setError]=useState(''),[password,setPassword]=useState(''),[confirmation,setConfirmation]=useState(''),[busy,setBusy]=useState(false),[done,setDone]=useState(false);
+ useEffect(()=>{let alive=true;beginPasswordRecovery().then(()=>{if(alive)setReady(true);}).catch(()=>{if(alive)setError('El enlace no es válido o ha vencido. Solicita un nuevo enlace de recuperación.');});return()=>{alive=false;};},[]);
+ async function submit(event:FormEvent){event.preventDefault();if(busy)return;if(!validRecoveryPassword(password,confirmation)){setError('Usa al menos 8 caracteres y escribe la misma contraseña en ambos campos.');return;}setBusy(true);setError('');try{await finishPasswordRecovery(password);setPassword('');setConfirmation('');setDone(true);}catch(e){setError(passwordRecoveryError(e));}finally{setBusy(false);}}
+ return <div className="admin admin-login"><img className="admin-login-logo" src="/brand/colti-logo-burgundy.svg" alt="COLTI" width="180" height="46"/><h1>Nueva contraseña</h1>{error&&<p className="admin-error" role="alert">{error}</p>}{done?<><p>Contraseña actualizada.</p><a href="/admin/orders">Iniciar sesión</a></>:ready?<form onSubmit={submit}><label>Nueva contraseña<input type="password" required minLength={8} autoComplete="new-password" value={password} onChange={e=>setPassword(e.target.value)}/></label><label>Confirmar contraseña<input type="password" required minLength={8} autoComplete="new-password" value={confirmation} onChange={e=>setConfirmation(e.target.value)}/></label><button disabled={busy}>{busy?'Guardando…':'Guardar contraseña'}</button></form>:!error?<p role="status">Verificando enlace…</p>:null}</div>;
+}

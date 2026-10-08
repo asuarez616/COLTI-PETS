@@ -1,0 +1,37 @@
+# Dependencies and local caches
+node_modules/
+.pnpm-store/
+.asset-tools/
+
+# Build output and test artifacts
+dist/
+coverage/
+test-results/
+playwright-report/
+artifacts/
+output/
+tmp/
+*.tsbuildinfo
+preview-server*.log
+
+# Local environment and credentials (keep the documented template)
+.env*
+!.env.example
+.supabase/
+supabase/.temp/
+supabase/.branches/
+
+# ChatGPT project mirror metadata and synced references
+/AGENTS.md
+/sources/
+
+# Local/editor files
+.DS_Store
+Thumbs.db
+
+# Historical backups and live-project bootstrap snapshots are not app source
+/audits/orders-layout-backup/
+/audits/phase-24/fresh-project-bootstrap.sql
+/audits/phase-24/activate-owner.sql
+/audits/phase-24/*.png
+/audits/phase-24/live-*.json

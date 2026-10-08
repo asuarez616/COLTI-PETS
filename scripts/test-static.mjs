@@ -1,0 +1,4 @@
+import assert from 'node:assert/strict';
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+try{const page=await browser.newPage({viewport:{width:390,height:844}});const errors=[];page.on('pageerror',e=>errors.push(e.message));const response=await page.goto('http://127.0.0.1:4174/colti/');assert.equal(response.status(),200);await page.getByRole('heading',{name:'First, what’s your name?'}).waitFor();await page.goto('http://127.0.0.1:4174/colti/#/production');await page.reload();await page.getByRole('heading',{name:'Owner sign in'}).waitFor();assert.deepEqual(errors,[]);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);console.log('PASS: static build under /colti/, assets, production hash route refresh, mobile width.');}finally{await browser.close();}

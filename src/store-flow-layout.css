@@ -1,0 +1,123 @@
+/* Shared Store configurator frame: one viewport, one editorial hero, one action rail. */
+@keyframes configurator-step-enter{from{opacity:.55}to{opacity:1}}
+#root:has(>.configurator-layout){display:flex;flex-direction:column;height:100dvh;min-height:100dvh;overflow:hidden}
+#root:has(>.configurator-layout)>.site-header,
+#root:has(>.configurator-layout)>.site-footer,
+#root:has(>.configurator-layout)>.environment-banner{flex:0 0 auto}
+
+main.configurator-layout:has(.flow[data-flow-step]){display:flex;flex:1 1 0;width:100%;max-width:none;min-width:0;min-height:0;margin:0;overflow:hidden}
+.configurator-layout:has(.flow[data-flow-step])>.story{display:flex;position:relative;flex:0 0 38%;width:38%;min-width:0;min-height:0;height:auto;padding:0;border:0;overflow:hidden;background:var(--brand-pink)}
+.configurator-layout .story .editorial-carousel{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;isolation:isolate;overflow:hidden;background:var(--brand-pink)}
+.configurator-layout .story .editorial-carousel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-desktop-focal,50% 36%);opacity:0;transition:opacity 1s ease}
+.configurator-layout .story .editorial-carousel>img.active{opacity:1}
+.configurator-layout .story .editorial-tint{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(62,24,48,.34),transparent 18%,transparent 62%,rgba(62,24,48,.74)),rgba(210,71,147,.1)}
+.configurator-layout .story .editorial-eyebrow{position:absolute;top:clamp(20px,4dvh,40px);left:7%;right:7%;z-index:1;margin:0;color:var(--cream);font-size:9px;letter-spacing:1.8px;text-shadow:0 1px 8px #3e243466}
+.configurator-layout .story .story-copy{position:absolute;right:7%;bottom:clamp(28px,8dvh,86px);left:7%;z-index:1;width:auto;max-width:none;margin:0;padding:0;color:var(--cream)}
+.configurator-layout .story .story-copy h2{margin:0 0 16px;color:var(--cream);font-size:clamp(24px,3vw,46px);line-height:1.08;letter-spacing:-.8px}
+.configurator-layout .story .story-copy em{color:var(--cream)}
+.configurator-layout .story .story-copy>p{max-width:390px;margin:0;color:var(--cream);font-size:13px;line-height:1.65;text-shadow:0 1px 8px #3e243466}
+
+.configurator-layout>.configurator-area:has(>.flow[data-flow-step]){display:flex;flex:1 1 0;flex-direction:column;width:67%;min-width:0;min-height:0;height:auto;padding:clamp(16px,2dvh,24px) clamp(24px,5vw,76px) max(12px,env(safe-area-inset-bottom));overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-gutter:stable;overflow-anchor:none}
+.flow[data-flow-step]{display:flex;flex:1 0 0;flex-direction:column;width:100%;max-width:800px;min-width:0;min-height:684px;height:100%;margin:0 auto;padding:0}
+.flow[data-flow-step]>.flow-progress{position:static;flex:none;margin:0 0 clamp(20px,3dvh,32px);padding:4px 0 8px;background:var(--cream)}
+.flow[data-flow-step] .progress-meta{margin-bottom:8px}
+.flow[data-flow-step] .progress-track{height:2px;margin:0}
+.flow[data-flow-step]>form{display:flex;flex:1 1 auto;flex-direction:column;width:100%;min-width:0;min-height:0}
+.flow[data-flow-step] form>.flow-question{display:flex;flex:1 1 auto;flex-direction:column;justify-content:safe center;gap:clamp(24px,4dvh,40px);min-width:0;min-height:0}
+.flow[data-flow-step] .flow-title{position:relative;flex:0 0 auto;min-height:0;margin:0}
+.flow[data-flow-step] .flow-title h1{margin:0;font-size:clamp(24px,2.6vw,36px);line-height:1.18}
+.flow[data-flow-step] .flow-title>.eyebrow{position:static;margin:0 0 10px;font-size:8px;letter-spacing:1px}
+.flow[data-flow-step] .flow-title>p:not(.eyebrow){margin:8px 0 0;font-size:12px}
+.flow[data-flow-step] .flow-content{flex:0 1 auto;width:100%;max-height:100%;min-width:0;min-height:0;margin:0;padding:2px 2px 8px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;overflow-anchor:none;animation:configurator-step-enter 220ms cubic-bezier(.2,.7,.25,1) both}
+.flow[data-flow-step] .flow-content input,.flow[data-flow-step] .flow-content textarea,.flow[data-flow-step] .flow-content select{max-width:100%;min-width:0}
+.flow[data-flow-step] .flow-actions{position:static;display:flex;flex:none;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 0;padding:12px 0 max(10px,env(safe-area-inset-bottom));border-top:var(--border-subtle);background:var(--cream);z-index:auto}
+.flow[data-flow-step] .flow-actions button{min-height:44px}
+.flow[data-flow-step] .flow-actions .button-row{gap:10px}
+.flow[data-flow-step] .big-input:focus-visible{outline:none;border-bottom:2px solid var(--brand-deep)}
+
+/* Catalog steps use the viewport for browsing; the prompt and action rail stay anchored. */
+.flow[data-flow-step="design"] .flow-question{justify-content:flex-start;gap:clamp(14px,2.5dvh,24px)}
+.flow[data-flow-step="design"] .flow-title{flex:none}
+.flow[data-flow-step="design"] .flow-content{display:flex;flex:1 1 0;flex-direction:column;min-height:0;max-height:none;overflow:hidden;padding:0}
+.flow[data-flow-step="design"] #catalog-panel{display:flex;flex:1 1 0;flex-direction:column;min-height:0}
+.flow[data-flow-step="design"] .store-design-browser{display:flex;flex:1 1 0;flex-direction:column;min-height:0}
+.flow[data-flow-step="design"] .store-design-filters,.flow[data-flow-step="design"] .store-design-results{flex:none}
+.flow[data-flow-step="design"] .store-design-scroll{flex:1 1 0;min-height:0;max-height:none;height:auto;overflow:auto;overscroll-behavior:contain}
+
+/* Long-form details scroll as a unit; the title/action frame remains consistent. */
+.flow[data-flow-step="review"] .flow-question,.flow[data-flow-step="order-summary"] .flow-question{justify-content:flex-start;gap:0}
+.flow[data-flow-step="review"] .flow-title{flex:none;margin:8px 0 10px}
+.flow[data-flow-step="review"] .flow-title h1{font-size:clamp(24px,2.6vw,36px)}
+.flow[data-flow-step="review"] .flow-content,.flow[data-flow-step="order-summary"] .flow-content{flex:1 1 0;max-height:none;overflow:auto;padding:2px 8px 8px}
+.flow[data-flow-step="review"] .collar-review{min-height:0}
+.flow[data-flow-step="order-summary"] .flow-actions{justify-content:flex-end}
+.flow[data-flow-step="order-summary"] .flow-actions .primary{width:auto;min-width:min(230px,100%);margin:0}
+
+@media(min-width:601px) and (max-width:1199px){
+ .flow[data-flow-step]{max-width:900px}
+ .flow[data-flow-step] .flow-title h1,.flow[data-flow-step="review"] .flow-title h1{font-size:clamp(23px,3.3vw,32px)}
+ .flow[data-flow-step="review"] .collar-review-product{grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:14px 18px}
+ .flow[data-flow-step="review"] .collar-review-product>.design-image{width:100%;max-width:260px}
+ .flow[data-flow-step="review"] .collar-review-body-edit{width:auto;min-width:128px;margin-top:14px}
+ .flow[data-flow-step="review"] .collar-review-tag .collar-review-personalization{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start;gap:14px 24px}
+ .flow[data-flow-step="review"] .collar-review-tag .collar-review-personalization>div>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
+ .flow[data-flow-step="review"] .collar-review-lettering:not(:has(.collar-review-photo,.collar-review-photo-loading)){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);grid-template-rows:auto auto auto;align-items:center;gap:10px 14px}
+ .flow[data-flow-step="review"] .collar-review-lettering>.collar-review-heading{grid-column:1/-1;grid-row:1}
+ .flow[data-flow-step="review"] .collar-review-lettering .collar-review-personalization-summary{display:contents}
+ .flow[data-flow-step="review"] .collar-review-lettering .collar-review-personalization-summary>[data-fact="personalization"]{grid-column:2;grid-row:2/4;align-self:center;margin:0}
+ .flow[data-flow-step="review"] .collar-review-lettering-content,.flow[data-flow-step="review"] .collar-review-font-preview{display:contents}
+ .flow[data-flow-step="review"] .collar-review-font-label{grid-column:1;grid-row:2;margin:0 0 4px}
+ .flow[data-flow-step="review"] .collar-review-font-preview>.lettering-renderer,.flow[data-flow-step="review"] .collar-review-font-preview>p:not(.collar-review-font-label){grid-column:1;grid-row:3;max-width:100%;max-height:58px;margin:0}
+ .flow[data-flow-step="review"] .collar-review-lettering:has(.collar-review-photo,.collar-review-photo-loading){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,.6fr);grid-template-rows:auto auto auto;align-items:center;gap:10px 14px}
+ .flow[data-flow-step="review"] .collar-review-lettering:has(.collar-review-photo,.collar-review-photo-loading) .collar-review-photo,.flow[data-flow-step="review"] .collar-review-lettering:has(.collar-review-photo,.collar-review-photo-loading) .collar-review-photo-loading{grid-column:3;grid-row:2/4}
+}
+@media(min-width:601px) and (max-width:1199px) and (orientation:landscape){
+ .configurator-layout:has(.flow[data-flow-step])>.story{flex-basis:40%;width:40%}
+ .configurator-layout>.configurator-area:has(>.flow[data-flow-step]){width:60%;padding:clamp(16px,2dvh,24px) clamp(20px,3.5vw,40px) max(12px,env(safe-area-inset-bottom))}
+}
+@media(min-width:601px) and (max-width:1199px) and (orientation:portrait){
+ .configurator-layout:has(.flow[data-flow-step])>.story{flex-basis:51%;width:51%}
+ .configurator-layout>.configurator-area:has(>.flow[data-flow-step]){width:49%;padding:clamp(16px,2dvh,24px) clamp(18px,2.6vw,30px) max(12px,env(safe-area-inset-bottom))}
+ .configurator-layout .story .editorial-carousel>img{object-position:var(--hero-tablet-portrait-focal,var(--hero-desktop-focal,50% 38%))}
+}
+@media(min-width:601px) and (max-width:800px){
+ .configurator-layout .story .story-copy h2{font-size:clamp(21px,3vw,28px)}
+ .configurator-layout .story .story-copy>p{font-size:11px}
+ .flow[data-flow-step="review"] .collar-review-product{grid-template-columns:minmax(0,.82fr) minmax(0,1fr);gap:14px 18px}
+ .flow[data-flow-step="review"] .collar-review-product>.design-image{max-width:220px}
+ .flow[data-flow-step="review"] .collar-review-tag .collar-review-personalization{grid-template-columns:minmax(0,1fr)}
+}
+@media(min-width:601px) and (max-width:800px) and (orientation:portrait){.configurator-layout:has(.flow[data-flow-step])>.story{flex-basis:51%;width:51%}.configurator-layout>.configurator-area:has(>.flow[data-flow-step]){width:49%;padding-inline:18px}}
+@media(max-width:600px){
+ #root:has(>.configurator-layout)>.site-footer{display:none}
+ .site-header{height:80px;flex:none}
+ main.configurator-layout:has(.flow[data-flow-step]){display:block}
+ .configurator-layout:has(.flow[data-flow-step])>.story{display:none}
+ .configurator-layout>.configurator-area:has(>.flow[data-flow-step]){width:100%;padding:18px 18px max(8px,env(safe-area-inset-bottom));overflow-y:auto}
+ .flow[data-flow-step]{max-width:none;min-height:632px}
+ .flow[data-flow-step]>.flow-progress{margin-bottom:clamp(16px,2.5dvh,24px)}
+ .flow[data-flow-step] .flow-title h1,.flow[data-flow-step="review"] .flow-title h1{font-size:24px}
+ .flow[data-flow-step] form>.flow-question{gap:clamp(20px,3.5dvh,32px)}
+ .flow[data-flow-step="design"] .flow-question{gap:14px}
+ .flow[data-flow-step] .flow-actions{gap:8px;margin-top:10px;padding-top:10px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+ .flow[data-flow-step] .flow-actions .button-row{gap:8px}
+ .flow[data-flow-step] .flow-actions button{padding-inline:12px}
+ .flow[data-flow-step="review"] .collar-review-lettering{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+ .flow[data-flow-step="review"] .collar-review-lettering>.collar-review-heading{order:0;margin:0}
+ .flow[data-flow-step="review"] .collar-review-lettering-content{display:flex;flex-direction:column;order:1;gap:10px;min-width:0}
+ .flow[data-flow-step="review"] .collar-review-font-preview{display:flex;flex-direction:column;gap:4px;min-width:0}
+ .flow[data-flow-step="review"] .collar-review-font-label{margin:0}
+ .flow[data-flow-step="review"] .collar-review-font-preview>.lettering-renderer,.flow[data-flow-step="review"] .collar-review-font-preview>p:not(.collar-review-font-label){max-width:100%;max-height:58px;margin:0}
+ .flow[data-flow-step="review"] .collar-review-lettering .collar-review-personalization-summary{display:block;order:2;margin:0}
+}
+@media(prefers-reduced-motion:reduce){.flow[data-flow-step] .flow-content{animation:none}}
+
+/* Confirmation is a content page, so long orders must grow and scroll naturally. */
+#root:has(>.configurator-layout>.configurator-area>.flow.complete){display:flex;width:100%;height:auto;min-height:100dvh;overflow:visible}
+main.configurator-layout:has(>.configurator-area>.flow.complete){display:block;flex:1 0 auto;width:100%;max-width:none;height:auto;min-height:calc(100dvh - 180px);margin:0;overflow:visible}
+.configurator-layout>.configurator-area:has(>.flow.complete){display:block;flex:none;width:100%;max-width:none;height:auto;min-height:0;overflow:visible}
+.configurator-layout>.configurator-area>.flow.complete{width:100%;max-width:1000px;margin-inline:auto}
+@media(min-width:601px) and (max-width:1199px){
+ .configurator-layout:has(>.configurator-area>.flow.complete)>.story{display:none}
+ .configurator-layout>.configurator-area:has(>.flow.complete){width:100%;flex:1 0 auto;padding-inline:clamp(24px,5vw,64px)}
+}

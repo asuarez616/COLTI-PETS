@@ -1,0 +1,4 @@
+import {it,expect} from 'vitest';
+import {blankDraft,changeSize,sizes} from '../domain/model';
+import {getNextStep,getPreviousStep,getCurrentStep,getVisibleSteps,getProgress} from './steps';
+it('asks width only when there are multiple available choices',()=>{for(const size of sizes){const draft=blankDraft();draft.current=changeSize(draft.current,size.code,[]);draft.step='size';const c={draft};expect(getVisibleSteps(c).some(s=>s.id==='width')).toBe(size.widths.length>1);expect(getNextStep(c)).toBe(size.widths.length>1?'width':'design');if(size.widths.length===1){expect(draft.current.width_cm).toBe(size.widths[0]);draft.step='design';expect(getPreviousStep(c)).toBe('size');draft.step='width';expect(getCurrentStep(c).id).toBe('design');expect(getProgress(c).total).toBe(10);}else{expect(getProgress(c).total).toBe(11);}}});

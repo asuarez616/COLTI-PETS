@@ -1,0 +1,5 @@
+import {describe,it,expect} from 'vitest';
+import {initialTags,validateTags,resolveAnti,tagAwaitingSize} from './idTags';
+describe('fixed Anti-fall ribbon widths',()=>{it('resolves each ribbon to the matching plate',()=>{for(const mapping of initialTags.mapping)expect(resolveAnti(initialTags,{size_code:mapping.size,width_cm:mapping.width})?.key).toBe(mapping.model);});it('rejects assigning a built-in plate to another ribbon width',()=>{const c=structuredClone(initialTags);c.mapping.find(m=>m.size==='XS'&&m.width===1.5)!.model='miniature';expect(()=>validateTags(c)).toThrow('INVALID_MAPPING');});});
+
+it('waiting for a size is not unavailability',()=>{const i={tag_type:'hanging',tagShape:'paw',size_code:'M',width_cm:2.5} as import('./model').Item;expect(tagAwaitingSize(initialTags,i)).toBe(true);expect(tagAwaitingSize(initialTags,{...i,tagSize:'medium'})).toBe(false);const c=structuredClone(initialTags);c.hanging.find(m=>m.key==='paw')!.active=false;expect(tagAwaitingSize(c,i)).toBe(false);});

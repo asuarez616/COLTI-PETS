@@ -1,0 +1,4 @@
+import type {CollectionRecord} from '../domain/catalogGroups';
+export interface CollectionsRepository {load():Promise<CollectionRecord[]>;create(name:string):Promise<void>;change(action:'rename'|'delete'|'activate'|'deactivate',name:string,newName:string|null,revision:number):Promise<void>}
+const name=(v:string)=>{const clean=v.trim().replace(/\s+/g,' ').normalize('NFC');if(!clean||clean.length>80||/[\x00-\x1f]/.test(clean))throw Error('INVALID_COLLECTION');return clean;};
+export const collectionsApplication=(r:CollectionsRepository)=>({load:()=>r.load(),create:(v:string)=>r.create(name(v)),change:(action:'rename'|'delete'|'activate'|'deactivate',v:string,next:string|null,revision:number)=>{if(!Number.isSafeInteger(revision)||revision<0)throw Error('INVALID_REVISION');return r.change(action,name(v),next===null?null:name(next),revision);}});

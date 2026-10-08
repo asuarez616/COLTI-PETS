@@ -1,0 +1,8 @@
+import {test,expect} from './fixture-catalog';
+for(const shape of ['paw','circle','bone','military','anti-fall'])test('configured preview preserves '+shape,async({page})=>{
+ await page.goto('/');await page.evaluate(async shape=>{const path='/src/domain/model.ts',rules='/src/domain/rules.ts';const {blankDraft}=await import(path),{getAvailableTagSizes}=await import(rules);const d=blankDraft(),size=getAvailableTagSizes(shape)[0];d.step='personalization';Object.assign(d.current,{tag_type:shape==='anti-fall'?'anti_fall':'hanging',tagShape:shape==='anti-fall'?undefined:shape,tagSize:size?.id,tagWidthCm:size?.width,tagHeightCm:size?.height,pet_name:'Maximiliano Rodriguez',tag_phone:'0984156889',personalization_type:'decoration',decorationIcon:'heart',tagExtras:{selected:['address','neutered','health','phones'],address:'Quito',neutered:'Neutered',health:'Daily medication',phones:'0992826805',familyName:'',familyPhone:'',other:''}});sessionStorage.setItem('colti-draft-v1',JSON.stringify(d));},shape);await page.reload();
+ const plate=page.locator('.original-tag-face');await expect(plate).toBeVisible();await expect.poll(()=>plate.locator('img').evaluate((img:HTMLImageElement)=>img.complete&&img.naturalWidth>0)).toBe(true);
+ expect(await page.locator('.tag-face-preview').evaluate(e=>e.getBoundingClientRect().width)).toBeCloseTo(shape==='bone'?179.469:shape==='anti-fall'?247.2372421875:149.5575,1);
+ if(shape!=='anti-fall'){await page.getByRole('button',{name:'View back',exact:true}).click();await expect(page.getByRole('status')).toHaveText('Back · details');await expect(page.getByRole('button',{name:'View back',exact:true})).toBeDisabled();}
+ await expect(page.locator('.tag-face-line')).toHaveCount(shape==='bone'||shape==='anti-fall'?3:4);
+});

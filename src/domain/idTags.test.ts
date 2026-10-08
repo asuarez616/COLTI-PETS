@@ -1,0 +1,11 @@
+import {describe,it,expect} from 'vitest';
+import {initialTags,resolveAnti,validConfiguredTag,validateTags,tagTypeAvailable,selectConfiguredShape,tagSnapshot} from './idTags';
+import {blankItem,sizes,blankDraft} from './model';
+import {canContinue} from '../configurator/steps';
+import {getTagSummary} from './presentation';
+describe('published ID Tags',()=>{
+ it('resolves every master pair including Micro exclusively for 2XS',()=>{for(const s of sizes)for(const w of s.widths){const model=resolveAnti(initialTags,{size_code:s.code,width_cm:w});expect(model?.key).toBe(initialTags.mapping.find(m=>m.size===s.code&&m.width===w)?.model);}expect(resolveAnti(initialTags,{size_code:'XS',width_cm:1})?.key).toBe('miniature');expect(resolveAnti(initialTags,{size_code:'M',width_cm:3})).toBeUndefined();expect(()=>validateTags({...initialTags,mapping:[{size:'XS',width:1,model:'micro'}]})).toThrow();});
+ it('retains selected values while disabled types, models and sizes invalidate',()=>{const c=structuredClone(initialTags);const i=selectConfiguredShape(c,{...blankItem(),size_code:'M',width_cm:2.5},'circle');expect(validConfiguredTag(c,i)).toBe(true);c.hanging.find(m=>m.key==='circle')!.sizes[0].active=false;expect(validConfiguredTag(c,i)).toBe(false);expect(i.tagShape).toBe('circle');c.types[0].active=false;expect(tagTypeAvailable(c,'hanging',i)).toBe(false);c.anti.find(m=>m.key==='medium')!.active=false;expect(tagTypeAvailable(c,'anti_fall',{...i,tag_type:'anti_fall'})).toBe(false);});
+ it('blocks Continue after realtime invalidation and does not add an anti-fall model step',()=>{const c=structuredClone(initialTags),draft=blankDraft();draft.current={...blankItem(),size_code:'S',width_cm:2,tag_type:'anti_fall'};draft.step='tag-type';const context={draft,designs:[],fonts:[],catalogReady:true,tags:c};expect(canContinue(context)).toBe(true);c.mapping=[];expect(canContinue(context)).toBe(false);expect(draft.current.tag_type).toBe('anti_fall');});
+ it('snapshots keep names and dimensions after configuration changes',()=>{const i={...blankItem(),size_code:'2XS',width_cm:1,tag_type:'anti_fall' as const};const snapshot=tagSnapshot(initialTags,i)!;expect(snapshot.model.key).toBe('micro');expect(getTagSummary({...i,tag_snapshot:snapshot},'en').size).toBe('3 × 1.2 cm');});
+});

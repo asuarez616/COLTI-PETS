@@ -1,0 +1,191 @@
+[
+  {
+    "id": "1AIxnD8OIJ34qZ2rXEAvpCeWNCw3R0NMl",
+    "name": "0.png",
+    "width": 1086,
+    "height": 1448,
+    "originalBytes": 2034211,
+    "variants": [
+      {
+        "file": "editorial/0-480.webp",
+        "width": 480,
+        "height": 640,
+        "bytes": 282180
+      },
+      {
+        "file": "editorial/0-800.webp",
+        "width": 800,
+        "height": 1067,
+        "bytes": 793560
+      },
+      {
+        "file": "editorial/0-1086.webp",
+        "width": 1086,
+        "height": 1448,
+        "bytes": 1383428
+      }
+    ]
+  },
+  {
+    "id": "1nUWu4m0RU7S9p-A3Jvpsiri6m2BlENHr",
+    "name": "1.png",
+    "width": 1092,
+    "height": 1440,
+    "originalBytes": 2091431,
+    "variants": [
+      {
+        "file": "editorial/1-480.webp",
+        "width": 480,
+        "height": 633,
+        "bytes": 286610
+      },
+      {
+        "file": "editorial/1-800.webp",
+        "width": 800,
+        "height": 1055,
+        "bytes": 799276
+      },
+      {
+        "file": "editorial/1-1092.webp",
+        "width": 1092,
+        "height": 1440,
+        "bytes": 1397738
+      }
+    ]
+  },
+  {
+    "id": "1CE2ISYjAHfxefq6QXPgHWUnm1bhUA1yE",
+    "name": "2.png",
+    "width": 1127,
+    "height": 1396,
+    "originalBytes": 2097260,
+    "variants": [
+      {
+        "file": "editorial/2-480.webp",
+        "width": 480,
+        "height": 595,
+        "bytes": 270454
+      },
+      {
+        "file": "editorial/2-800.webp",
+        "width": 800,
+        "height": 991,
+        "bytes": 761730
+      },
+      {
+        "file": "editorial/2-1127.webp",
+        "width": 1127,
+        "height": 1396,
+        "bytes": 1452604
+      }
+    ]
+  },
+  {
+    "id": "12xoCHP1FJNLHldzansMKYZuS-Cj6XcpS",
+    "name": "4.png",
+    "width": 1097,
+    "height": 1434,
+    "originalBytes": 1995842,
+    "variants": [
+      {
+        "file": "editorial/4-480.webp",
+        "width": 480,
+        "height": 627,
+        "bytes": 263800
+      },
+      {
+        "file": "editorial/4-800.webp",
+        "width": 800,
+        "height": 1046,
+        "bytes": 760244
+      },
+      {
+        "file": "editorial/4-1097.webp",
+        "width": 1097,
+        "height": 1434,
+        "bytes": 1369672
+      }
+    ]
+  },
+  {
+    "id": "1KxLL__cYWTP8Uq4w-tft1DjENfSWQ7-B",
+    "name": "5",
+    "width": 1125,
+    "height": 1398,
+    "originalBytes": 1842815,
+    "variants": [
+      {
+        "file": "editorial/drive/1KxLL__cYWTP8Uq4w-tft1DjENfSWQ7-B-15c22374f9f4-480.webp",
+        "width": 480,
+        "height": 596,
+        "bytes": 22182
+      },
+      {
+        "file": "editorial/drive/1KxLL__cYWTP8Uq4w-tft1DjENfSWQ7-B-15c22374f9f4-800.webp",
+        "width": 800,
+        "height": 994,
+        "bytes": 48618
+      },
+      {
+        "file": "editorial/drive/1KxLL__cYWTP8Uq4w-tft1DjENfSWQ7-B-15c22374f9f4-1125.webp",
+        "width": 1125,
+        "height": 1398,
+        "bytes": 79714
+      }
+    ]
+  },
+  {
+    "id": "100FSFos_2Hze15tTRjTMY-amACIDHjbr",
+    "name": "ChatGPT Image 6 ago 2026, 09_46_20 p.m..png",
+    "width": 1087,
+    "height": 1446,
+    "originalBytes": 2149926,
+    "variants": [
+      {
+        "file": "editorial/drive/100FSFos_2Hze15tTRjTMY-amACIDHjbr-55a5bda4198e-480.webp",
+        "width": 480,
+        "height": 639,
+        "bytes": 44252
+      },
+      {
+        "file": "editorial/drive/100FSFos_2Hze15tTRjTMY-amACIDHjbr-55a5bda4198e-800.webp",
+        "width": 800,
+        "height": 1064,
+        "bytes": 109816
+      },
+      {
+        "file": "editorial/drive/100FSFos_2Hze15tTRjTMY-amACIDHjbr-55a5bda4198e-1087.webp",
+        "width": 1087,
+        "height": 1446,
+        "bytes": 170660
+      }
+    ]
+  },
+  {
+    "id": "1fAJr-6StEl49siYXxr_SlcgXzNQAJYzo",
+    "name": "ChatGPT Image 6 ago 2026, 10_37_00 p.m..png",
+    "width": 1112,
+    "height": 1415,
+    "originalBytes": 1901039,
+    "variants": [
+      {
+        "file": "editorial/drive/1fAJr-6StEl49siYXxr_SlcgXzNQAJYzo-d7707cbaf3ea-480.webp",
+        "width": 480,
+        "height": 611,
+        "bytes": 29902
+      },
+      {
+        "file": "editorial/drive/1fAJr-6StEl49siYXxr_SlcgXzNQAJYzo-d7707cbaf3ea-800.webp",
+        "width": 800,
+        "height": 1018,
+        "bytes": 63600
+      },
+      {
+        "file": "editorial/drive/1fAJr-6StEl49siYXxr_SlcgXzNQAJYzo-d7707cbaf3ea-1112.webp",
+        "width": 1112,
+        "height": 1415,
+        "bytes": 101586
+      }
+    ]
+  }
+]

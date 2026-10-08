@@ -1,0 +1,13 @@
+# Local configurator → Admin order connection
+
+Before: configurator 4173 saved confirmed demo orders in its browser session; Admin 4174 displayed an unrelated seeded order. The two origins did not share browser storage. There is still no live Supabase project configured.
+
+After: an explicit loopback-only bridge mirrors confirmed local orders into `.asset-tools/private/local-orders.json`. Admin 4174 uses this shared durable record for listing, searching, status changes and private notes. No sample order is seeded. Initial page refresh recovered all 15 user-generated orders, through DEMO-COLTI-US-0015; all 3 linked photo/drawing attachments were copied into the local private file store. Confirmation behavior, draft recovery, order snapshots and DEMO codes remain intact. New confirmations mirror immediately; recovery retries on refresh, focus and every 15 seconds. The Admin list refreshes on focus and every 15 seconds.
+
+Import is serialized and idempotent by order ID/key. Repeated imports do not overwrite production status or private notes. Updates check the saved updated_at and approved status transitions. Existing validation is reused via the local server's SSR loader. The bridge checks loopback source/Host and an exact list of local origins. Photos are limited by stored attachment IDs, declared length, size and image signature. This bridge is mounted only in admin-preview and is not an internet-facing substitute for Supabase owner authentication.
+
+Validation: local server integration test verifies persistence across middleware restart, duplicate recovery, private-note omission from lists, status transitions, optimistic conflicts and origin rejection. Browser test creates a valid confirmed order through the existing confirmation adapter and verifies mirrored metadata and rendering in Admin after refresh. Test records are isolated/mocked and were not added to the user's 15 orders. Existing 6 Admin/OAuth browser tests passed. Actual 4174 list was read back with the user's DEMO-COLTI-US-0015 order.
+
+OAuth: encrypted server storage key prepared privately; Google client ID/secret still unavailable. Google Cloud's signed-in page requires user completion of two-step verification, and the user has no existing project. No billing, paid trial, paid API or service was activated. OAuth is not claimed functional until the client is registered and real consent is completed.
+
+Remaining deployment debt: these are local generated orders on this computer. Multi-device/internet orders require configured Supabase and hosted owner authentication. The live repository remains unchanged.

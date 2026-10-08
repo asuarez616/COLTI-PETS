@@ -1,0 +1,14 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {extname} from 'node:path';
+const manifest=JSON.parse(await readFile(new URL('../src/catalog/font-manifest.json',import.meta.url),'utf8'));
+const quote=s=>"'"+String(s).replaceAll("'","''")+"'";
+const values=manifest.map(f=>`(${f.number},${quote(f.label)},${quote('plates/'+String(f.number).padStart(2,'0')+extname(f.file))},${quote('colti-plate-'+f.number)},'ready',true,'letras-2025-v1',${quote(JSON.stringify({size:f.size,weight:f.weight||400,transform:f.transform||'none'}))}::jsonb)`).join(',\n');
+await writeFile(new URL('../supabase/seed-fonts.sql',import.meta.url),`-- Numbering and presentation from supplied Letras-2025/hoja.css.\ninsert into public.fonts(number,label,asset_path,css_family,state,active,asset_version,presentation) values\n${values}\non conflict(number) do update set label=excluded.label,asset_path=excluded.asset_path,css_family=excluded.css_family,state=excluded.state,active=excluded.active,asset_version=excluded.asset_version,presentation=excluded.presentation;\n`);
+const migrationUrl=new URL('../supabase/migrations/202610010001_colti.sql',import.meta.url);
+let migration=await readFile(migrationUrl,'utf8');
+migration=migration.replace("'asset_version',f.asset_version));","'asset_version',f.asset_version,'presentation',coalesce(to_jsonb(f)->'presentation','{}'::jsonb)));");
+await writeFile(migrationUrl,migration);
+const start=migration.indexOf('create function public.confirm_order(');
+const end=migration.indexOf('revoke all on function public.confirm_order',start);
+await writeFile(new URL('../supabase/migrations/202610010002_font_presentation.sql',import.meta.url),"-- Preserve reference styling in snapshots of newly confirmed orders.\nalter table public.fonts add column if not exists presentation jsonb not null default '{}'::jsonb;\nupdate storage.buckets set allowed_mime_types=array['font/woff2','font/woff','font/ttf','font/otf','application/octet-stream'] where id='font-assets';\n"+migration.slice(start,end).replace('create function public.confirm_order','create or replace function public.confirm_order'));
+console.log('Font seed and snapshot presentation migration ready.');

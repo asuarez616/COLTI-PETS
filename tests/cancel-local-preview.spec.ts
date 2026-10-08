@@ -1,0 +1,6 @@
+import {test,expect} from '@playwright/test';
+test('local cancellation button submits with no reason without changing real orders',async({page})=>{
+ const orders=await (await page.request.get('http://127.0.0.1:4174/api/admin/local-orders')).json();const order=orders.find((o:{status:string})=>o.status==='new');let sent=false;
+ await page.route('**/api/admin/local-orders/**',async route=>{if(route.request().method()!=='POST')return route.continue();const body=route.request().postDataJSON();if(body.orders)return route.fulfill({contentType:'application/json',body:JSON.stringify({added:0})});sent=true;expect(body.status).toBe('cancelled');await route.fulfill({contentType:'application/json',body:JSON.stringify({order:{...order,status:'cancelled',updated_at:new Date().toISOString()},note:'',cancellationReason:''})});});
+ await page.goto('http://127.0.0.1:4174/admin/orders');for(const candidate of orders.filter((o:{status:string})=>o.status==='new').slice(0,2)){sent=false;await page.getByLabel('Move '+candidate.order_code).selectOption('cancelled');await expect(page.getByRole('dialog')).toBeVisible();await page.getByRole('button',{name:'Confirm cancellation',exact:true}).click();await expect(page.getByRole('dialog')).toHaveCount(0);expect(sent).toBe(true);}
+});

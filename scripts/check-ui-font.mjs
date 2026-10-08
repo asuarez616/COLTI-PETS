@@ -1,0 +1,4 @@
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch({channel:'chrome',headless:true});const page=await browser.newPage();await page.goto('http://127.0.0.1:4176/admin/product-settings');await page.waitForSelector('.admin');await page.evaluate(()=>document.fonts.ready);
+console.log(await page.evaluate(()=>({fonts:Array.from(document.fonts).map(f=>({family:f.family,status:f.status})),body:getComputedStyle(document.querySelector('.admin')).fontFamily})));
+const cdp=await page.context().newCDPSession(page);await cdp.send('DOM.enable');await cdp.send('CSS.enable');const {root}=await cdp.send('DOM.getDocument');const {nodeId}=await cdp.send('DOM.querySelector',{nodeId:root.nodeId,selector:'.admin p'});if(nodeId)console.log(await cdp.send('CSS.getPlatformFontsForNode',{nodeId}));await browser.close();

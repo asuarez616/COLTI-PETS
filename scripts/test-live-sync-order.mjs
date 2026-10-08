@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {writeFile} from 'node:fs/promises';
+import {loadEnv} from 'vite';
+import {createClient} from '@supabase/supabase-js';
+// Explicit, non-destructive live check: creates one clearly identified test order.
+if(!process.argv.includes('--create-test-order'))throw Error('Explicit --create-test-order is required');
+const env=loadEnv('production',process.cwd(),'');
+const client=createClient(env.VITE_SUPABASE_URL,env.VITE_SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:false,autoRefreshToken:false}});
+const login=await client.auth.signInAnonymously();assert.equal(login.error,null);
+const designs=await client.from('designs').select('id,code').eq('active',true).limit(1);assert.equal(designs.error,null);
+const design=designs.data[0];assert.ok(design);
+const widths=await client.from('design_compatibility').select('size_code,width_cm').eq('design_id',design.id).limit(1);assert.equal(widths.error,null);
+const width=widths.data[0];assert.ok(width);
+const args={p_key:randomUUID(),p_draft:randomUUID(),p_customer:{name:'COLTI SYNC TEST',phone:'+1 555 123 4567'},p_items:[{id:randomUUID(),...width,design_id:design.id,collar_type:'plastic_buckle',tag_type:'hanging',tagShape:'bone',tagSize:'medium',tagWidthCm:2.7,tagHeightCm:4,pet_name:'Sync Test',tag_phone:'+1 555 123 4567',extra_text:'',font_number:36,personalization_type:'none',personalization_notes:'',attachments:[]}]};
+const results=await Promise.all([client.rpc('confirm_order',args),client.rpc('confirm_order',args)]);
+for(const result of results)assert.equal(result.error,null);
+const order=results[0].data;assert.equal(results[1].data.id,order.id);
+assert.equal((await client.rpc('find_order',{p_key:args.p_key})).data.id,order.id);
+assert.equal((await client.rpc('confirm_order',args)).data.id,order.id);
+assert.equal((await client.rpc('is_owner')).data,false);
+assert.ok((await client.rpc('admin_orders',{p_search:'',p_status:null,p_page:0})).error);
+const proof={project:new URL(env.VITE_SUPABASE_URL).hostname,orderId:order.id,orderCode:order.order_code,design:design.code,checkedAt:new Date().toISOString(),checks:['anonymous session','real catalogue compatibility','concurrent confirmation exactly once','recovery by key','retry same order','customer cannot access admin']};
+await writeFile('audits/phase-24/live-order-proof.json',JSON.stringify(proof,null,2));
+console.log(JSON.stringify(proof,null,2));

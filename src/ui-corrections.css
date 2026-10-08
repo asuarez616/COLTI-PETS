@@ -1,0 +1,930 @@
+/* Phase 20.0: intrinsic asset height must not determine catalogue card height. */
+.design-grid{align-items:start}
+.design-card .image-button{height:auto;aspect-ratio:1;min-height:0}
+.design-card .design-image{height:auto;aspect-ratio:1;object-fit:contain}
+.lettering-renderer{display:block;width:100%;min-width:0}
+.lettering-quick .fitted-lettering{--lettering-max-size:var(--lettering-quick-size)}
+.lettering-quick .lettering-renderer[data-font-number="28"] .fitted-lettering{--lettering-max-size:var(--lettering-quick-size-28)}
+.tag-font-observer{display:block;width:1px;height:1px;position:absolute;pointer-events:none}
+.summary-facts{margin:0;position:relative}
+.summary-facts>div{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--space-12);padding:var(--space-6) 0;font-size:var(--font-size-12)}
+.summary-facts dt{color:var(--muted)}
+.summary-facts dd{margin:0;min-width:0;white-space:pre-line;overflow-wrap:anywhere}
+.mobile-collar-facts{display:none}
+.attachment-thumbnail{width:80px;height:64px;object-fit:contain;display:block}
+.complete .downloads .button-row{justify-content:center}
+.confirmation-restart{display:block;margin:var(--space-12) auto 0;border:0;text-decoration:underline}
+.local-demo-indicator{color:var(--muted);font-size:var(--font-size-11)}
+.mobile-lettering-title{display:none}
+/* Confirmation iteration: editorial product presence, shared summary data. */
+.complete .order-heading{padding:var(--space-12) 0 var(--space-28)}
+.complete .order-heading>.eyebrow{margin-bottom:var(--space-14);color:var(--brand-deep)}
+.complete .order-heading h2{font-family:var(--font-heading);font-size:clamp(27px,3vw,38px);line-height:1.2;margin-bottom:var(--space-18)}
+.complete .order-heading>p:not(.eyebrow):not(.local-demo-indicator){font-size:var(--font-size-15);line-height:1.6}
+.confirmation-collar{padding:var(--space-28) 0 30px}
+.confirmation-collar .order-collar-heading{margin-bottom:var(--space-20)}
+.confirmation-collar .order-collar-product-row{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:var(--space-28);align-items:center}
+.confirmation-collar .order-collar-product-row .order-collar-image{width:100%;height:auto;aspect-ratio:1}
+.confirmation-collar .order-collar-name{font-size:clamp(28px,3vw,38px);margin-bottom:var(--space-18)}
+.confirmation-collar .order-collar-code,.confirmation-collar .order-collar-specs,.confirmation-collar .mobile-collar-facts{display:none}
+.confirmation-product-facts h4{margin-bottom:var(--space-10)}
+.confirmation-collar .summary-facts>div{font-size:var(--font-size-13);padding:7px 0}
+.confirmation-collar .order-collar-tag-lettering{margin-top:var(--space-28);gap:var(--space-28)}
+.confirmation-collar .desktop-lettering-title{display:none}
+.confirmation-collar .mobile-lettering-title{display:inline}
+.confirmation-collar .order-collar-lettering .summary-facts>div{display:grid;grid-template-columns:80px minmax(0,1fr);gap:var(--space-12)}
+.confirmation-collar .order-collar-lettering .summary-facts>div:first-child>dt{position:static;width:auto;height:auto;clip-path:none;overflow:visible}
+.confirmation-collar .order-collar-lettering .lettering-renderer{margin-top:var(--space-10);--lettering-max-size:30}
+.confirmation-decoration{display:flex;align-items:center;gap:var(--space-10)}
+.confirmation-decoration svg{width:28px;height:28px;color:#b98783;flex-shrink:0}
+.confirmation-collar .attachment-thumbnail{width:min(140px,100%);height:100px}
+.complete .downloads{border-top:var(--border-subtle);padding-top:var(--space-28);margin-bottom:var(--space-16)}
+.complete .downloads button{min-height:48px;padding:var(--space-12) var(--space-24)}
+
+.confirmation-collars>.personality-option{border:0;border-bottom:var(--border-subtle);border-radius:0;background:transparent;margin:0}
+.confirmation-collars .personality-toggle{padding:var(--space-18) 0;gap:var(--space-16);text-align:left}
+.confirmation-collars .personality-toggle:hover{background:transparent}
+.confirmation-collar-thumb{width:64px;height:64px;object-fit:contain;flex-shrink:0;border-radius:3px}
+.confirmation-collar-overview{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.confirmation-collar-overview strong{font-family:var(--font-heading);font-size:22px;font-weight:500;overflow-wrap:anywhere}
+.confirmation-collar-overview small{font-size:var(--font-size-10);font-weight:400;color:var(--muted);overflow-wrap:anywhere}
+.confirmation-collars .personality-expanded{padding:0}
+.confirmation-collars .confirmation-collar{border:0;padding:var(--space-8) 0 var(--space-24)}
+.confirmation-collars .order-collar-heading{display:none}
+.collar-collapse{border-bottom:var(--border-subtle)}
+.collar-collapse-header{display:flex;align-items:center;gap:var(--space-16)}
+.collar-collapse-toggle{flex:1;min-width:0;display:flex;align-items:center;gap:var(--space-16);border:0;padding:var(--space-18) 0;text-align:left;border-radius:0}
+.collar-collapse-toggle:hover{background:transparent}
+.collar-collapse-thumb{width:64px;flex-shrink:0}
+.collar-collapse-thumb img{width:64px;height:64px;object-fit:contain;border-radius:3px}
+.collar-collapse-label{flex:1;min-width:0;display:block}
+.collar-collapse-label>small{display:block;font-size:var(--font-size-10);font-weight:400;color:var(--muted);margin:3px 0}
+.collar-collapse-label .font-number,.order-collar-name .font-number{display:none}
+.collar-collapse-label .lettering-renderer{--lettering-max-size:27;margin:var(--space-8) 0}
+.collar-collapse .order-collar-summary{border:0;padding-top:var(--space-8)}
+.order-collar-summary .summary-facts>div{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);border-bottom:var(--border-subtle);padding:9px 0}
+.order-collar-summary .summary-facts>div:last-child{border-bottom:0}
+.order-collar-summary .summary-facts dt{position:static;width:auto;height:auto;clip-path:none;overflow:visible;font-size:var(--font-size-12)}
+.order-collar-name .lettering-renderer{--lettering-max-size:34}
+.collar-collapse .confirmation-collar .order-collar-product-row{grid-template-columns:180px minmax(0,1fr);align-items:start}
+.order-collar-summary .order-collar-tag .summary-facts>div>dt{position:static;width:auto;height:auto;clip-path:none;overflow:visible}
+@media(max-width:600px){.collar-collapse .confirmation-collar .order-collar-product-row{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.collar-collapse-header{gap:var(--space-10);flex-wrap:wrap}.collar-collapse-toggle{flex-basis:65%;gap:var(--space-10)}.collar-collapse-header>.order-collar-actions{gap:var(--space-10)}.collar-collapse-thumb,.collar-collapse-thumb img{width:48px}.collar-collapse-thumb img{height:48px}.collar-collapse-label .lettering-renderer{--lettering-max-size:23}}
+@media(max-width:600px){
+ .confirmation-collar .order-collar-product-row{grid-template-columns:minmax(0,1fr);gap:var(--space-20)}
+ .confirmation-collar .order-collar-product-row .order-collar-image{width:min(260px,80vw);margin-inline:auto}
+ .confirmation-collar .order-collar-product-info{text-align:left}
+ .confirmation-collar .order-collar-name{text-align:center;margin-bottom:22px}
+ .confirmation-collar .order-collar-tag-lettering{grid-template-columns:minmax(0,1fr);gap:var(--space-24);margin-top:var(--space-24)}
+ .confirmation-collar .order-collar-lettering .summary-facts>div{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+ .complete .downloads button{padding:var(--space-12) var(--space-18)}
+}
+@media(min-width:601px){.order-collar-tag .summary-facts>div,.order-collar-lettering .summary-facts>div{display:block}.order-collar-tag dt,.order-collar-lettering dt{font-size:var(--font-size-10)}.order-collar-tag .summary-facts>div:nth-child(-n+3)>dt,.order-collar-lettering .summary-facts>div:first-child>dt{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}
+@media(max-width:600px){
+ .order-collar-product-row .order-collar-image{width:min(200px,70vw);height:auto;aspect-ratio:1;margin-inline:auto}
+ .order-collar-product-info{text-align:center}
+ .order-collar-product-info>.order-collar-code,.order-collar-product-info>.order-collar-specs{display:none}
+ .mobile-collar-facts{display:block;margin-top:var(--space-18)}
+ .order-collar-tag-lettering{margin-top:var(--space-18);gap:var(--space-18)}
+ .order-collar-lettering{--lettering-max-size:24}
+ .order-collar-lettering .lettering-renderer{margin-top:5px}
+ .mobile-lettering-title{display:inline}.desktop-lettering-title{display:none}
+ .complete .downloads .button-row{flex-wrap:wrap}
+}
+
+/* Confirmation metadata and shared fact-table refinements. */
+.complete .confirmation-order-meta{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-16);flex-wrap:wrap;margin-bottom:26px}
+.complete .confirmation-order-meta h2{flex:1 1 300px;min-width:0;margin:0;overflow-wrap:anywhere}
+.complete .confirmation-order-meta time{font-size:var(--font-size-12);color:var(--muted);margin-left:auto;white-space:nowrap}
+.confirmation-customer>.eyebrow{font-family:inherit;font-size:var(--font-size-11);font-weight:500;letter-spacing:.16em;line-height:normal;margin:0 0 var(--space-8);color:var(--brand-deep)}
+.confirmation-customer>p:last-child{font-size:var(--font-size-15);line-height:1.6;margin:0;overflow-wrap:anywhere}
+.complete .order-collar-summary .summary-facts>div{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--space-12);padding:9px 0;border-bottom:var(--border-subtle)}
+.complete .order-collar-summary .summary-facts>div>dt{position:static;width:auto;height:auto;clip-path:none;overflow:visible;font-size:var(--font-size-12);color:var(--muted)}
+.complete .order-collar-lettering .font-number{display:none}
+.complete .order-collar-lettering .lettering-renderer{--lettering-max-size:30;margin-top:var(--space-10)}
+.complete .downloads button{background:transparent;border:var(--border-subtle)}
+@media(max-width:600px){.complete .confirmation-order-meta h2{flex-basis:100%}.complete .confirmation-order-meta{gap:var(--space-10)}.complete .order-collar-tag-lettering{grid-template-columns:minmax(0,1fr)}}
+
+.complete{container-type:inline-size;container-name:confirmation}
+@container confirmation (max-width:520px){
+ .complete .order-collar-tag-lettering{grid-template-columns:minmax(0,1fr)}
+ .complete .order-collar-product-row,.complete .collar-collapse .order-collar-product-row{grid-template-columns:minmax(0,1fr)}
+ .complete .order-collar-product-row .order-collar-image{width:min(260px,100%);margin-inline:auto}
+}
+
+/* Confirmation accordion details use their own three-block grid below. */
+.complete .order-heading{border-bottom:var(--border-subtle);margin-bottom:var(--space-24)}
+.confirmation-order-label{font-family:inherit;font-size:var(--font-size-11);letter-spacing:.16em;color:var(--brand-deep);margin:0 0 var(--space-12)}
+.complete .confirmed-detail{padding-top:var(--space-6);padding-bottom:var(--space-18)}
+.confirmation-date{border-top:var(--border-subtle);padding:var(--space-16) 0 0;margin-top:var(--space-24);color:var(--muted);font-size:var(--font-size-11)}
+
+/* Editorial summaries: readable facts, with labels above values. */
+.order-collar-summary .summary-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-16) var(--space-24)}
+.order-collar-summary .summary-facts>div,.complete .order-collar-summary .summary-facts>div{display:flex;flex-direction:column;gap:5px;padding:0;border:0;min-width:0}
+.order-collar-summary .summary-facts>div>dt,.complete .order-collar-summary .summary-facts>div>dt{position:static;clip-path:none;width:auto;height:auto;overflow:visible;font-size:var(--font-size-11);line-height:1.4;color:var(--muted)}
+.order-collar-summary .summary-facts>div>dd{font-size:var(--font-size-14);line-height:1.5;color:var(--ink);white-space:pre-line}
+.order-collar-summary .summary-facts>[data-fact="design"],.order-collar-summary .summary-facts>[data-fact="style"],.order-collar-summary .summary-facts>[data-fact="address"],.order-collar-summary .summary-facts>[data-fact="health"],.order-collar-summary .summary-facts>[data-fact="family"],.order-collar-summary .summary-facts>[data-fact="other"],.order-collar-summary .summary-facts>[data-fact="notes"]{grid-column:1 / -1}
+.order-collar-summary h4{margin-bottom:var(--space-14)}
+.order-collar-summary .order-collar-tag-lettering{grid-template-columns:minmax(0,1fr);gap:0;margin-top:22px}
+.order-collar-summary:not(.confirmed-detail) .order-collar-lettering{border-top:var(--border-subtle);margin-top:var(--space-20);padding-top:var(--space-18)}
+.order-collar-summary .confirmation-decoration{gap:var(--space-8)}
+.order-collar-summary .confirmation-decoration svg{width:22px;height:22px}
+@media(max-width:600px){.order-collar-summary .summary-facts{gap:var(--space-14) var(--space-18)}.order-collar-summary .summary-facts>div>dd{font-size:var(--font-size-14)}.order-collar-summary .order-collar-product-info{text-align:left}}
+@media(max-width:360px){.order-collar-summary .summary-facts{grid-template-columns:minmax(0,1fr)}}
+
+.complete .confirmation-title{margin:0 0 var(--space-28);padding-bottom:var(--space-16);border-bottom:2px solid var(--brand-pink);font-family:var(--font-body);font-size:var(--font-size-10);font-weight:400;line-height:1.6;letter-spacing:1.6px;color:var(--ink)}
+.complete .collar-collapse-thumb,.complete .collar-collapse-thumb img{width:77.44px}
+.complete .collar-collapse-thumb img{height:77.44px}
+@media(max-width:600px){.complete .collar-collapse-thumb,.complete .collar-collapse-thumb img{width:58.08px}.complete .collar-collapse-thumb img{height:58.08px}}
+
+/* Review product: a prominent, naturally proportioned image beside its details. */
+@media(min-width:801px){
+ .collar-review-product{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:var(--collar-detail-column-gap);align-items:start}
+ .collar-review-product>.design-image{width:100%;max-width:420px;min-width:0;height:auto;aspect-ratio:1;object-fit:contain;margin:0;justify-self:start}
+ .collar-review-configuration{padding-top:var(--space-8)}
+}
+
+/* Reserve breathing room for the original flourishes in styles 17 and 18. */
+.ornamental-lettering .lettering-fit-viewport{padding:.15em .25em .25em;line-height:2}
+.ornamental-lettering .lettering-fit-text{line-height:2}
+
+.engraving-example{margin:var(--space-16) 0 22px;display:flex;align-items:center;gap:var(--space-18)}
+.engraving-example img{width:170px;max-width:50%;height:105px;object-fit:contain;flex-shrink:0}
+.engraving-example figcaption{font-size:var(--font-size-11);color:var(--muted);line-height:1.5}
+@media(max-width:600px){.engraving-example{gap:var(--space-12)}.engraving-example img{width:140px;height:90px}}
+
+/* Drawing / Photo: warm reference examples followed by a compact upload action. */
+:is(#personality-drawing,#personality-dog_photo) .personality-expanded{padding:0 var(--space-20) var(--space-20)}
+:is(#personality-drawing,#personality-dog_photo) .engraving-example{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-8);margin:var(--space-18) 0 var(--space-20);padding-bottom:var(--space-18);border-bottom:var(--border-subtle)}
+:is(#personality-drawing,#personality-dog_photo) .engraving-example img{width:190px;max-width:100%;height:110px;object-fit:contain}
+:is(#personality-drawing,#personality-dog_photo) .engraving-example figcaption{font-size:var(--font-size-10);letter-spacing:.04em}
+:is(#personality-drawing,#personality-dog_photo) .upload-box{min-height:150px;background:var(--cream);border-color:#d8bcb8;border-radius:var(--radius-6);gap:var(--space-8);padding:var(--space-18);position:relative;cursor:pointer}
+:is(#personality-drawing,#personality-dog_photo) .upload-box .upload-icon{font-size:var(--font-size-24);color:#B98783}
+:is(#personality-drawing,#personality-dog_photo) .upload-box strong{font-size:var(--font-size-14)}
+:is(#personality-drawing,#personality-dog_photo) .upload-box input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+:is(#personality-drawing,#personality-dog_photo) .upload-box:focus-within{outline:2px solid var(--brand-pink);outline-offset:3px}
+:is(#personality-drawing,#personality-dog_photo) .personality-notes{margin-top:var(--space-18)}
+@media(max-width:600px){:is(#personality-drawing,#personality-dog_photo) .personality-expanded{padding:0 var(--space-16) var(--space-16)}}
+
+/* Example and upload share one row when the panel offers comfortable space. */
+:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-20);margin:var(--space-18) 0}
+:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout .engraving-example{flex:0 1 190px;margin:0;padding:0;border:0;gap:var(--space-12)}
+:is(#personality-drawing,#personality-dog_photo) .engraving-example figcaption{font-family:var(--font-body);font-size:var(--font-size-11);font-weight:400;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout .upload-box{flex:1 1 200px;min-width:0;margin:0}
+:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout>.reveal{flex-basis:100%}
+@media(max-width:600px){:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout{gap:var(--space-16)}}
+
+/* Keep the reference centered when the upload row needs to stack. */
+:is(#personality-drawing,#personality-dog_photo) .personality-expanded{container-type:inline-size}
+@container(max-width:409px){
+ :is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout .engraving-example{flex-basis:100%;align-items:center;text-align:center}
+}
+
+:is(#personality-drawing,#personality-dog_photo) .engraving-example figcaption{width:100%;text-align:center}
+
+/* Selection is expressed by the border and header; expanded content stays white. */
+.personality-options>.personality-option.selected{background:#fff;border-color:var(--brand-deep)}
+.personality-options>.personality-option.selected>.personality-toggle{background:var(--surface-selected)}
+.personality-options>.personality-option.selected .personality-expanded{background:#fff}
+.personality-options .decoration-grid button.selected{background:var(--surface-soft)}
+
+/* Uploaded references take priority over the compact add-more action. */
+.personality-options .upload-box.has-upload{min-height:76px;padding:var(--space-12);gap:var(--space-4)}
+.personality-options .upload-box.has-upload .upload-icon{display:none}
+.personality-options .file-row{display:flex;align-items:center;gap:var(--space-14);padding:var(--space-14) 0;border-bottom:var(--border-subtle)}
+.personality-options .file-row .attachment-thumbnail{width:72px;height:64px;flex:none}
+.personality-options .uploaded-file-info{display:flex;flex-direction:column;gap:var(--space-6);min-width:0;flex:1}
+.personality-options .uploaded-file-info small{font-size:var(--font-size-11);color:var(--muted)}
+.personality-options .uploaded-file-info>span{font-size:var(--font-size-12);overflow-wrap:anywhere}
+.personality-options .file-row button{border:0;background:transparent;padding:var(--space-8);font-size:var(--font-size-12);text-decoration:underline;flex:none}
+@media(max-width:400px){.personality-options .file-row{gap:var(--space-8)}.personality-options .file-row .attachment-thumbnail{width:54px;height:54px}}
+
+/* Decoration preview: name above, neutral typography for the engraved details. */
+.personality-options .original-tag-face .fitted-tag-content{justify-content:flex-start}
+.personality-options .tag-engraving{gap:var(--space-8)}
+.personality-options .tag-face-name{width:100%;justify-content:flex-start;align-items:center;gap:var(--space-6)}
+.personality-options .original-tag-face .tag-face-name>svg{width:20px;height:20px;flex:none}
+.personality-options .tag-face-line{width:100%;align-items:center;gap:var(--space-4)}
+.personality-options .tag-face-line .lettering-fit-text{white-space:pre-wrap!important;overflow-wrap:anywhere}
+.personality-options .tag-preview-disclaimer{margin:var(--space-8) 0 var(--space-20);text-align:center;font-size:var(--font-size-10);line-height:1.5;color:var(--muted)}
+
+.personality-options .tag-detail-text{font-family:Montserrat,sans-serif;font-weight:400;flex:1;min-width:0;white-space:pre-wrap;overflow-wrap:anywhere}
+
+.personality-options .tag-face-name .lettering-fit-viewport{display:flex;justify-content:center;align-items:center;gap:var(--space-4);width:100%}
+.personality-options .lettering-inline-decoration{display:inline-flex;flex:none;align-items:center}
+.personality-options .lettering-inline-decoration svg{width:18px;height:18px}
+
+/* Keep decoration beside the right edge of the name and details across the engraving area. */
+.personality-options .lettering-inline-decoration{order:1}
+.personality-options .tag-face-line .tag-detail-text{display:block;width:100%;flex:1;font-size:inherit;line-height:1.25}
+.personality-options .tag-face-line{align-items:flex-start}
+
+/* Fit each information row independently; icons reserve a fixed, minimal slot. */
+.personality-options .tag-face-line{gap:var(--space-4);align-items:center}
+.personality-options .tag-face-line>svg{width:12px;height:12px;flex:0 0 12px}
+.personality-options .tag-face-line .tag-detail-text{white-space:pre;overflow-wrap:normal;line-height:1.1}
+
+.tag-extra-fields .contact-fields{margin-top:var(--space-18)}
+.tag-extra-fields .contact-fields:not(.tag-family-fields)>label{display:grid;gap:5pt}
+.tag-extra-fields .contact-fields:not(.tag-family-fields)>label+label{margin-top:0;padding-top:10pt}
+.contact-number-label{font-size:calc(1em - 2pt)}
+.tag-extra-choices .contact-mode-option{display:inline-flex;align-items:center;gap:var(--space-8)}
+.contact-mode-option svg{width:18px;height:18px;flex-shrink:0}
+.tag-extra-fields{margin-top:26px}
+
+.tag-extra-fields .tag-extra-choices+input,.tag-extra-fields .tag-extra-choices+.contact-fields{margin-top:var(--space-24)}
+.tag-extra-fields .tag-extra-choices+.contact-fields:not(.tag-family-fields){margin-top:calc(var(--space-24) - 5pt)}
+
+
+/* Information rows: final approved cascade consolidated in one component block. */
+.personality-options .tag-face-line{display:block;padding:0 2px;min-width:0;line-height:1.15}
+.personality-options .tag-info-unit{display:flex;align-items:center;gap:var(--space-4);width:100%;max-width:none;transform:none;transform-origin:left center;white-space:pre;line-height:1.15}
+.personality-options .tag-info-unit>svg{width:16px;height:16px;flex:0 0 16px}
+.personality-options .tag-info-unit .tag-detail-text{display:inline-block;width:auto;flex:none;font-size:inherit;white-space:pre;overflow-wrap:normal;line-height:1.15;transform-origin:left center;letter-spacing:normal}
+.personality-options .tag-engraving{gap:2px}
+
+.personality-options .tag-face-name{justify-content:center;text-align:center}
+.personality-options .tag-face-name .lettering-fit-viewport{justify-content:center;text-align:center}
+
+.personality-options .lettering-inline-decoration svg{width:22px;height:22px}
+
+.tag-preview-pages{text-align:center;margin:var(--space-8) 0 var(--space-12)}
+.tag-preview-pages p{font-size:var(--font-size-10);line-height:1.5;color:var(--muted);margin:0 0 var(--space-8)}
+.tag-preview-pages>div{display:flex;justify-content:center;align-items:center;gap:var(--space-12)}
+.tag-preview-pages button{width:44px;min-height:var(--control-min-height);padding:var(--space-6);background:transparent;border:var(--border-subtle);border-radius:var(--radius-6)}
+.tag-preview-pages span{font-size:var(--font-size-11);color:var(--muted)}
+
+.tag-preview-full-details{max-width:360px;margin:var(--space-12) auto;font-size:var(--font-size-12);line-height:1.5}
+.tag-preview-full-details>p{font-size:var(--font-size-11);color:var(--muted);margin-bottom:var(--space-10)}
+.tag-preview-full-details>div{display:flex;align-items:flex-start;gap:var(--space-8);padding:var(--space-4) 0;overflow-wrap:anywhere}
+.tag-preview-full-details svg{width:16px;height:16px;flex:none}
+
+.personality-options .tag-side-front .fitted-tag-content{justify-content:center}
+.personality-options .tag-side-front .tag-engraving{justify-content:center;text-align:center}
+
+/* Geometry and per-model typography come exclusively from tagPreviewConfig. */
+.personality-options .tag-face-preview{margin-left:auto;margin-right:auto}
+.personality-options .original-tag-face .tag-face-content{top:var(--tag-top);bottom:var(--tag-bottom);left:var(--tag-left);right:var(--tag-right)}
+.personality-options .tag-face-name .fitted-lettering{--lettering-max-size:var(--tag-name-max);width:100%;flex:1;min-width:0;text-align:center;margin:0}
+
+.complete .downloads .button-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+.complete .downloads .button-row button{width:100%;min-width:0}
+@media(max-width:400px){.complete .downloads .button-row{grid-template-columns:1fr}}
+
+.size-guide-link{font-size:11.55px;position:relative;top:5pt}
+.error,[role="alert"]{margin-block-start:5pt}
+
+
+/* Burgundy modal scrim and centered lettering previews. */
+dialog::backdrop{background:rgba(62,36,52,.48)}
+.lettering-grid .lettering-card{min-height:150px;padding:36px 20px 20px;position:relative;text-align:center;align-items:center}
+.lettering-grid .font-number{position:absolute;top:16px;left:18px}
+.lettering-card .lettering-fit-viewport{text-align:center;width:100%}
+.lettering-card .lettering-renderer{width:100%;flex:0 1 auto}
+.lettering-quick .lettering-card .lettering-renderer{flex:1}
+/* Progress remains above scrolling choices. */
+.flow-progress{position:sticky;top:-1px;z-index:4;background:var(--cream);padding:14px 0 12px;margin-bottom:28px}
+.flow-progress .progress-meta{margin-bottom:10px}
+.flow-progress .progress-track{margin-bottom:0}
+.store-design-filters{display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+.store-design-filters>label{display:grid;gap:8px;font-size:11px;min-width:160px;flex:1}
+.store-design-filters select{width:100%;min-height:40px;padding:8px 12px;border:var(--border-subtle);border-radius:8px;background:var(--cream);color:var(--ink);font-size:12px}
+.design-color-filters{border:0;padding:0;margin:0;min-width:0;flex:2}
+.design-color-filters legend{font-size:11px;margin-bottom:6px}
+.design-color-filters>div{display:flex;gap:4px;flex-wrap:wrap}
+.design-color-filters button{min-width:36px;min-height:40px;padding:5px;border:1px solid transparent;font-size:11px;display:flex;align-items:center;justify-content:center}
+.design-color-filters button:first-child{padding:5px 9px}
+.design-color-filters button span{width:22px;height:22px;border-radius:50%;border:1px solid #3e24341c}
+.design-color-filters button.is-active{border-color:var(--brand-primary);background:var(--surface-soft)}
+.store-design-results{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted);min-height:32px;margin-bottom:8px}
+.store-design-results button{border:0;padding:4px;font-size:11px;min-height:32px;color:var(--brand-primary)}
+.store-design-scroll{max-height:clamp(220px,42dvh,520px);overflow:auto;overscroll-behavior:contain;padding:2px 6px 8px 2px;scrollbar-width:thin;scrollbar-color:#79616d55 transparent}
+.store-design-scroll::-webkit-scrollbar{width:4px}.store-design-scroll::-webkit-scrollbar-thumb{background:#79616d55;border-radius:8px}
+.design-flow .flow-title{margin-bottom:18px}.design-flow .tabs{margin-bottom:16px}
+.design-flow .flow-actions{position:sticky;bottom:-1px;z-index:3;background:var(--cream);padding:14px 0 max(14px,env(safe-area-inset-bottom));margin-top:16px;border-top:var(--border-subtle)}
+@media(max-width:600px){.flow-progress{margin-bottom:22px}.store-design-filters{gap:12px}.store-design-filters>label{flex-basis:100%}.store-design-scroll{max-height:36dvh}.design-color-filters{flex-basis:100%}.lettering-grid .lettering-card{min-height:135px;padding:34px 14px 16px}}
+@media(max-width:800px){
+ .design-flow{padding-bottom:86px}
+ .design-flow .flow-actions{position:fixed;left:24px;right:24px;bottom:0;margin:0;padding:12px 0 calc(12px + env(safe-area-inset-bottom));background:var(--cream);z-index:6}
+ .design-flow .store-design-scroll{max-height:clamp(120px,calc(100dvh - 570px),360px)}
+}
+@media(max-width:380px){.design-flow .flow-actions{left:18px;right:18px}}
+@media(max-width:600px){
+ .configurator-area:has(.design-flow){padding-top:10px}
+ .design-flow .flow-progress{padding:8px 0;margin-bottom:16px}
+ .design-flow .flow-title{margin-bottom:14px}
+ .design-flow .flow-title h1{font-size:26px;margin-bottom:0;line-height:1.2}
+ .design-flow .tabs{margin-bottom:12px}
+ .design-flow .tabs button{min-height:36px;padding:8px}
+ .design-flow .store-design-filters{gap:8px;margin-bottom:4px}
+ .design-flow .store-design-filters>label{gap:5px}
+ .design-flow .store-design-filters select{min-height:36px}
+ .design-flow .store-design-results{min-height:26px;margin-bottom:6px}
+ .design-flow .store-design-scroll{max-height:clamp(180px,calc(100dvh - 435px),430px)}
+}
+/* Consistent, monochrome product icon ink. */
+.product-icon,.id-tag-option .product-icon{color:var(--brand-primary)}
+.product-icon.tag-shape-icon[data-icon-source$="tag-bone.svg"]{width:59.84px;height:59.84px}
+.product-icon.tag-shape-icon[data-icon-source$="tag-circle.svg"]{width:51.68px;height:51.68px}
+/* Give choices and navigation separate rows; use the remaining viewport. */
+.configurator-area:has(.design-flow){display:flex;flex-direction:column;padding-bottom:16px;overflow:hidden}
+.design-flow{display:flex;flex-direction:column;flex:1;min-height:0;width:100%;padding-bottom:0;height:100%}
+.design-flow>.flow-progress,.design-flow>.flow-title{flex-shrink:0}
+.design-flow>form{display:flex;flex-direction:column;flex:1;min-height:0}
+.design-flow .tabs{flex-shrink:0}
+.design-flow .store-design-browser{display:flex;flex-direction:column;flex:1;min-height:0}
+.design-flow .store-design-filters,.design-flow .store-design-results{flex-shrink:0}
+.design-flow .store-design-scroll{flex:1;min-height:0;max-height:none;height:auto}
+.design-flow .flow-actions{position:static;flex-shrink:0;margin:12px 0 0;padding:12px 0;z-index:auto}
+.design-flow .store-design-filters{column-gap:32px;row-gap:18px}
+@media(max-width:800px){.configurator-area:has(.design-flow){height:calc(100dvh - 98px);min-height:450px}.design-flow .flow-actions{position:static;left:auto;right:auto;bottom:auto}.design-flow .store-design-scroll{max-height:none}}
+.design-flow #catalog-panel{display:flex;flex-direction:column;flex:1;min-height:0}
+@media(min-width:801px) and (max-width:1199px){
+ .configurator-layout:has(.design-flow)>.story{display:none}
+ .configurator-layout>.configurator-area:has(.design-flow){width:100%;padding-left:4%;padding-right:4%}
+ .design-flow{max-width:none}
+ .design-flow .design-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+/* Quick choices retain their original left alignment. */
+.lettering-quick .lettering-card .lettering-fit-viewport{text-align:left}
+.flow-progress{position:static;top:auto;z-index:auto}
+.design-flow .store-design-filters:has(>label){display:grid;grid-template-columns:minmax(140px,1fr) minmax(0,2fr);align-items:start;gap:18px 32px}
+.design-flow .store-design-filters:has(>label)>.design-color-filters{justify-self:end;width:100%}
+@media(max-width:600px){.design-flow .store-design-filters:has(>label){grid-template-columns:minmax(105px,1fr) minmax(0,1.5fr);column-gap:16px}.design-flow .store-design-filters>label{min-width:0}}
+.lettering-renderer[data-presentation-size] .fitted-lettering{--lettering-max-size:inherit}
+/* A quieter gallery heading and slightly larger color swatches. */
+.design-flow .flow-title h1{font-size:clamp(25px,2.5vw,36px)}
+.design-color-filters button span{width:23.76px;height:23.76px}
+@media(max-width:600px){.design-flow .flow-title h1{font-size:24px}}
+/* Printed color controls align with the gallery's right edge. */
+.design-flow .store-design-filters:has(>label)>.design-color-filters>div{justify-content:flex-end}
+.design-flow .store-design-filters:has(>label)>.design-color-filters legend{width:100%;text-align:right}
+/* Rebalance filters against product images without changing the grid. */
+.design-flow .store-design-filters select{min-height:38px;padding:7.6px 11.4px}
+.design-flow .design-color-filters button{min-width:34.2px;min-height:38px;padding:4.75px}
+.design-flow .design-color-filters button:first-child{padding:4.75px 8.55px}
+.design-flow .design-color-filters button span{width:22.572px;height:22.572px}
+.design-flow .design-grid{gap:8px}
+@media(max-width:600px){.design-flow .store-design-filters select{min-height:34.2px}}
+/* Give the design catalog priority within the existing viewport layout. */
+.configurator-area:has(.design-flow){padding-top:16px;padding-bottom:10px}
+.design-flow .flow-progress{padding:4px 0 8px;margin-bottom:14px}
+.design-flow .flow-progress .progress-meta{margin-bottom:8px}
+.design-flow .flow-title{margin-top:12px;margin-bottom:20px}
+.design-flow .flow-title h1{margin:0;line-height:1.18}
+.design-flow .tabs{margin-top:0;margin-bottom:10px}
+.design-flow .tabs button{min-height:36px;padding:8px}
+.design-flow .store-design-filters{margin-bottom:6px;row-gap:8px}
+.design-flow .store-design-filters>label{gap:5px}
+.design-flow .store-design-results{min-height:24px;margin-bottom:8px}
+.design-flow .flow-actions{margin-top:10px;padding:10px 0}
+@media(min-width:1200px){
+ .configurator-area:has(.design-flow){padding-left:3%;padding-right:3%}
+ .design-flow{max-width:760px}
+ .design-flow .design-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+/* Keep filter labels on the control row so browsing gets more height. */
+@media(min-width:601px){
+ .design-flow .flow-progress{margin-bottom:8px}
+ .design-flow .store-design-filters{align-items:center;margin-bottom:4px}
+ .design-flow .store-design-filters:has(>label){align-items:center}
+ .design-flow .store-design-filters>label{display:flex;align-items:center;gap:10px}
+ .design-flow .store-design-filters select{flex:1;min-width:0}
+ .design-flow .design-color-filters legend{float:left;width:auto!important;margin:0 10px 0 0;line-height:38px}
+ .design-flow .design-color-filters>div{justify-content:flex-end}
+ .design-flow .store-design-results{min-height:20px;margin-bottom:6px}
+}
+.design-flow .design-color-filters{width:fit-content!important;max-width:100%;flex:0 1 auto;justify-self:end}
+.design-flow .design-color-filters legend{float:left;width:auto!important;margin:0 10px 0 0;line-height:38px;text-align:left!important}
+.design-flow .design-color-filters>div{justify-content:flex-start!important}
+.design-flow .store-design-results{justify-content:flex-end}
+.design-flow .store-design-filters,.design-flow .store-design-filters:has(>label){margin-bottom:18px}
+/* Product-grid density remains specific to the design selection step. */
+@media(min-width:801px) and (max-width:1199px){.design-flow .design-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:800px){.design-flow .design-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.design-flow .design-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.design-flow>.flow-title+form>.flow-content{display:flex;flex-direction:column;overflow:hidden;padding:0}
+/* Trade footer/navigation space for a calmer header-to-progress gap. */
+@media(max-width:600px){.design-flow .design-color-filters .design-clear-filters{display:none}}
+@media(max-width:600px){
+ .design-flow .store-design-filters,.design-flow .store-design-filters:has(>label){display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-bottom:10px}
+ .design-flow .store-design-filters>label{display:flex;align-items:center;gap:10px;flex:none;min-width:0;font-size:10px}
+ .design-flow .store-design-filters select{width:auto;flex:1;min-height:32px;padding:5px 9px;font-size:11px}
+ .design-flow .design-color-filters{width:100%!important;max-width:100%;flex:none;min-width:0}
+ .design-flow .design-color-filters legend{float:left;font-size:10px;margin-right:8px;line-height:34px}
+ .design-flow .design-color-filters>div{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;min-width:0;scrollbar-width:none;gap:3px}
+ .design-flow .design-color-filters>div::-webkit-scrollbar{display:none}
+ .design-flow .design-color-filters button{flex-shrink:0;min-height:34px;padding-block:3px}
+ .design-flow .tabs{margin-bottom:6px}
+}
+.gallery-image-frame{display:block;position:relative;width:100%;aspect-ratio:1;overflow:hidden}
+.design-card .gallery-image-frame>.design-image{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:contain;opacity:0;transition:opacity 120ms ease}
+.gallery-image-skeleton{position:absolute;inset:0;background:linear-gradient(100deg,var(--surface-soft) 20%,var(--cream) 50%,var(--surface-soft) 80%);background-size:200% 100%;animation:collar-image-loading 1.4s ease-in-out infinite}
+.gallery-image-frame.is-ready>.design-image{opacity:1}
+.gallery-image-frame.is-ready>.gallery-image-skeleton{display:none}
+.gallery-image-frame>.image-failed{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center}
+@keyframes collar-image-loading{from{background-position:100% 0}to{background-position:-100% 0}}
+@media(prefers-reduced-motion:reduce){.gallery-image-skeleton{animation:none}.design-card .gallery-image-frame>.design-image{transition:none}}
+.design-flow .design-color-filters .design-clear-filters{border:0;background:transparent;padding:4px 6px;color:var(--brand-primary);font-size:10px;white-space:nowrap;margin-left:auto}
+.recovery-notice{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 16px;margin:0 0 18px}
+.recovery-notice>p{margin:0}
+.recovery-notice>small{grid-column:1/-1}
+@media(max-width:600px){.recovery-notice{grid-template-columns:minmax(0,1fr);gap:10px}.recovery-notice>small{grid-column:auto}.recovery-notice>button{justify-self:start}}
+
+/* Review keeps photo previews compact without cropping the uploaded image. */
+.collar-review-photo{display:block;width:100%;padding:0;margin-top:12px;border:0;background:transparent;text-align:left;min-height:0}
+.collar-review-photo img{display:block;width:auto;height:auto;max-width:100%;max-height:140px;object-fit:contain;border-radius:4px}
+.collar-review-photo-loading{height:110px;margin-top:12px;background:var(--line);border-radius:4px}
+.collar-review-photo-expanded{display:block;width:100%;max-height:70dvh;object-fit:contain}
+@media(min-width:1200px){
+ .order-expanded-review .collar-review{margin-top:16px}
+ .order-expanded-review .collar-review-product{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px}
+ .order-expanded-review .collar-review-product>.design-image{max-width:200px}
+ .order-expanded-review .collar-review-heading{margin-bottom:14px}
+ .order-expanded-review .collar-review dl{gap:10px}
+ .order-expanded-review .collar-review-edit{margin-top:14px}
+ .order-expanded-review .collar-review-tag{margin-top:18px;padding-top:18px}
+}
+@media(max-width:600px){
+ .flow[data-flow-step] .flow-actions{padding-top:18px}
+}
+
+
+/* Section editing stays beside its heading on desktop and tablets. */
+.collar-review-header-edit{display:none}
+@media(min-width:601px){
+ .collar-review-section-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:14px;min-width:0}
+ .order-expanded-review .collar-review-section-header>.collar-review-heading{margin:0}
+ .order-expanded-review .collar-review-header-edit{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;margin:0;min-height:36px;padding:8px 14px;font-size:12px;line-height:1.3}
+ .collar-review-body-edit{display:none}
+}
+
+@media(min-width:601px){
+ .order-expanded-review .flow-content{padding-right:16px}
+ .order-expanded-review .collar-review-header-edit{width:112px;height:36px;min-height:36px;padding:8px 10px;box-sizing:border-box}
+}
+
+@media(max-width:600px){
+ .collar-review-section-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+ .order-expanded-review .collar-review-section-header>.collar-review-heading{margin:0;min-width:0}
+ .order-expanded-review .collar-review-header-edit{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:112px;height:44px;min-height:44px;margin:0;padding:10px;box-sizing:border-box;font-size:12px;line-height:1.3}
+ .collar-review-body-edit{display:none}
+}
+
+/* Review uses the available width to avoid a tall stack of summary facts. */
+@media(min-width:801px){
+ .order-expanded-review .collar-review{margin-top:4px}
+ .order-expanded-review .collar-review-product{grid-template-columns:160px minmax(0,1fr);gap:24px;align-items:start}
+ .order-expanded-review .collar-review-product>.design-image{width:160px;max-width:160px}
+ .order-expanded-review .collar-review-configuration{padding-top:0}
+ .order-expanded-review .collar-review-configuration dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px}
+ .order-expanded-review .collar-review-tag{margin-top:16px;padding-top:14px}
+ .order-expanded-review .collar-review-personalization{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px}
+ .order-expanded-review .collar-review-personalization>div>dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px}
+ .order-expanded-review .collar-review-lettering{padding:14px;min-height:0}
+ .order-expanded-review .collar-review-lettering .collar-review-heading{margin-bottom:10px}
+ .order-expanded-review .collar-review-font-label{margin-bottom:8px}
+ .order-expanded-review .collar-review-section-header{margin-bottom:12px}
+}
+@media(min-width:801px){
+ .order-expanded-review .collar-review{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:24px;align-items:start}
+ .order-expanded-review .collar-review-product{grid-template-columns:minmax(0,1fr);gap:14px}
+ .order-expanded-review .collar-review-product>.design-image{width:160px}
+ .order-expanded-review .collar-review-tag{border-top:0;border-left:var(--border-subtle);margin-top:0;padding-top:0;padding-left:24px}
+ .order-expanded-review .collar-review-personalization{grid-template-columns:minmax(0,1fr);gap:14px}
+ .order-expanded-review .collar-review-lettering{position:relative;padding:12px;min-height:100px;padding-right:130px}
+ .order-expanded-review .collar-review-lettering>.lettering-renderer{max-height:48px}
+ .order-expanded-review .collar-review-photo{position:absolute;right:12px;top:12px;width:106px;margin:0}
+ .order-expanded-review .collar-review-photo img{max-height:110px;max-width:106px}
+}
+
+/* On mobile and tablets, editing follows each complete review section. */
+@media(max-width:1199px){
+ .order-expanded-review .collar-review-header-edit{display:none}
+ .order-expanded-review .collar-review-section-header{display:block}
+ .order-expanded-review .collar-review-body-edit{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:16px;padding:10px 14px;box-sizing:border-box;font-size:12px}
+ .order-expanded-review .collar-review-product{grid-template-columns:minmax(0,1fr);gap:16px}
+ .order-expanded-review .collar-review-configuration{display:contents}
+ .order-expanded-review .collar-review-configuration>dl{min-width:0}
+ .order-expanded-review .collar-review-lettering-column{display:contents}
+ .order-expanded-review .collar-review-tag-edit{grid-column:1/-1}
+}
+
+/* Review balances the two summaries and adapts naturally on tablets. */
+.order-expanded-review .collar-review{margin-top:24px}
+@media(min-width:1200px){
+ .order-expanded-review .collar-review{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px}
+ .order-expanded-review .collar-review-product{justify-items:center;gap:20px}
+ .order-expanded-review .collar-review-product>.design-image{width:min(100%,220px);max-width:220px;margin-inline:auto}
+ .order-expanded-review .collar-review-configuration{width:100%;max-width:280px}
+ .order-expanded-review .collar-review-configuration dl{gap:18px 20px}
+ .order-expanded-review .collar-review-section-header{margin-bottom:18px}
+}
+@media(min-width:601px) and (max-width:1199px){
+ .order-expanded-review .collar-review{display:block;margin-top:24px}
+ .order-expanded-review .collar-review-product{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1fr);gap:18px 24px;align-items:center}
+ .order-expanded-review .collar-review-product>.design-image{width:100%;max-width:220px;justify-self:center;margin:0}
+ .order-expanded-review .collar-review-configuration{display:contents}
+ .order-expanded-review .collar-review-configuration>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+ .order-expanded-review .collar-review-configuration>.collar-review-body-edit{grid-column:1/-1;margin-top:0}
+ .order-expanded-review .collar-review-tag{border-left:0;border-top:var(--border-subtle);padding-left:0;padding-top:20px;margin-top:24px}
+ .order-expanded-review .collar-review-personalization{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px 24px;align-items:start}
+ .order-expanded-review .collar-review-personalization>div>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
+ .order-expanded-review .collar-review-lettering{padding:16px;min-height:0}
+ .order-expanded-review .collar-review-photo{position:static;width:100%;margin-top:12px}
+ .order-expanded-review .collar-review-photo img{max-width:100%;max-height:140px}
+ .order-expanded-review .collar-review-tag-edit{margin-top:0}
+}
+
+@media(min-width:1200px){
+ .order-expanded-review .collar-review-product{justify-items:stretch;gap:18px}
+ .order-expanded-review .collar-review-product>.design-image{width:100%;max-width:none;margin:0}
+ .order-expanded-review .collar-review-configuration{width:100%;max-width:none}
+}
+
+@media(min-width:1200px){
+ .order-expanded-review .collar-review{align-items:stretch}
+ .order-expanded-review .collar-review>section:first-child{display:flex;flex-direction:column;min-width:0}
+ .order-expanded-review .collar-review-product{display:flex;flex:1;flex-direction:column;align-items:stretch;justify-content:space-between;gap:18px}
+ .order-expanded-review .collar-review-product>.design-image{width:min(100%,280px);max-width:280px;align-self:center;margin:0}
+ .order-expanded-review .collar-review-configuration{width:100%;max-width:none}
+}
+@media(min-width:1200px){
+ .order-expanded-review .collar-review-tag{display:flex;flex-direction:column}
+ .order-expanded-review .collar-review-personalization{display:flex;flex:1;flex-direction:column;justify-content:space-between;gap:18px}
+ .order-expanded-review .collar-review-personalization>div{width:100%}
+}
+
+.engraving-upload-control{width:100%;min-width:0}
+.engraving-upload-control .upload-box{width:100%;box-sizing:border-box}
+
+/* Compact reference + upload composition; both remain one component. */
+:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:16px;align-items:center;margin:12px 0}
+:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout .engraving-example{width:100%;align-items:center;justify-content:center;text-align:center;gap:6px;margin:0;padding:0}
+:is(#personality-drawing,#personality-dog_photo) .engraving-example img{width:145px;height:84px;max-width:100%}
+:is(#personality-drawing,#personality-dog_photo) .engraving-example figcaption{font-size:9px;letter-spacing:1px}
+:is(#personality-drawing,#personality-dog_photo) .upload-box{min-height:112px;padding:12px;gap:6px}
+:is(#personality-drawing,#personality-dog_photo) .upload-box .upload-icon{font-size:20px}
+:is(#personality-drawing,#personality-dog_photo) .upload-box strong{font-size:13px}
+:is(#personality-drawing,#personality-dog_photo) .upload-box small{font-size:10px;line-height:1.5}
+:is(#personality-drawing,#personality-dog_photo) .personality-notes{margin-top:12px}
+:is(#personality-drawing,#personality-dog_photo) .personality-notes textarea{min-height:68px;padding:10px}
+:is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout:not(:has(.engraving-example)){grid-template-columns:minmax(0,1fr)}
+@media(max-width:600px){
+ :is(#personality-drawing,#personality-dog_photo) .engraving-upload-layout{grid-template-columns:minmax(0,1fr);gap:10px}
+ :is(#personality-drawing,#personality-dog_photo) .engraving-example img{width:130px;height:72px}
+ :is(#personality-drawing,#personality-dog_photo) .upload-box{min-height:100px}
+}
+
+.collar-review-lettering .collar-review-personalization-summary{margin:0 0 12px}
+
+@media(min-width:1200px){
+ .order-expanded-review .collar-review-product{justify-content:flex-start;gap:18px}
+ .order-expanded-review .collar-review-configuration>dl{margin:0}
+ .order-expanded-review .collar-review-photo{top:12px;bottom:12px;right:12px;width:120px;display:flex;align-items:center;justify-content:center;margin:0}
+ .order-expanded-review .collar-review-photo img{width:100%;height:auto;max-width:120px;max-height:190px;object-fit:contain}
+ .order-expanded-review .collar-review-lettering{padding-right:144px}
+}
+
+/* Review: clear hierarchy, compact facts and an integrated personalization preview. */
+.order-expanded-review .collar-review{margin-top:24px}
+.order-expanded-review .collar-review-section-header{margin-bottom:18px}
+.order-expanded-review .collar-review-detail dt{font-size:11px;line-height:1.4;margin-bottom:4px}
+.order-expanded-review .collar-review-detail dd{font-size:14px;line-height:1.5}
+.order-expanded-review .collar-review-lettering{padding:16px;border:var(--border-subtle);border-radius:10px;min-height:0;background:transparent}
+.order-expanded-review .collar-review-lettering .collar-review-heading{margin-bottom:12px;font-size:10px;line-height:1.5}
+.collar-review-lettering-content{display:grid;grid-template-columns:minmax(0,1fr);align-items:center;gap:16px}
+.collar-review-lettering-content:has(.collar-review-photo),.collar-review-lettering-content:has(.collar-review-photo-loading){grid-template-columns:minmax(0,1fr) minmax(0,.85fr)}
+.collar-review-font-preview{min-width:0;overflow:hidden}
+.collar-review-font-preview>.font-number{display:none}
+.order-expanded-review .collar-review-font-label{margin:0 0 8px;font-size:11px}
+.order-expanded-review .collar-review-photo{position:static;inset:auto;width:100%;min-height:0;margin:0;padding:0;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.order-expanded-review .collar-review-photo img{width:auto;height:auto;max-width:100%;max-height:150px;margin:auto;object-fit:contain}
+.order-expanded-review .collar-review-photo:focus-visible{outline:2px solid var(--brand-pink);outline-offset:4px}
+.order-expanded-review .collar-review-lettering .collar-review-personalization-summary{margin-bottom:16px}
+@media(min-width:1200px){
+ .order-expanded-review .collar-review{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:start}
+ .order-expanded-review .collar-review-product{flex:0;gap:16px}
+ .order-expanded-review .collar-review-product>.design-image{width:min(100%,280px);max-width:280px;border-radius:8px}
+ .order-expanded-review .collar-review-configuration dl{gap:16px 20px}
+ .order-expanded-review .collar-review-personalization{flex:0;justify-content:flex-start;gap:20px}
+ .order-expanded-review .collar-review-tag{padding-left:28px}
+}
+@media(max-width:600px){
+ .order-expanded-review .collar-review-product{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:16px}
+ .order-expanded-review .collar-review-product>.design-image{width:100%;max-width:none;margin:0;border-radius:8px}
+ .order-expanded-review .collar-review-configuration{display:contents}
+ .order-expanded-review .collar-review-configuration>dl{gap:12px}
+ .order-expanded-review .collar-review-body-edit{grid-column:1/-1;margin-top:0;border-radius:8px}
+ .order-expanded-review .collar-review-tag{margin-top:24px;padding-top:24px}
+ .order-expanded-review .collar-review-personalization{gap:18px}
+ .order-expanded-review .collar-review-personalization>div>dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ .order-expanded-review .collar-review-detail dd{font-size:13px}
+ .order-expanded-review .collar-review-lettering .collar-review-personalization-summary{grid-template-columns:minmax(0,1fr)}
+ .order-expanded-review .collar-review-photo img{max-height:130px}
+}
+
+/* Review scale follows the viewport while preserving each breakpoint's composition. */
+@media(min-width:601px) and (max-width:1199px){
+ .order-expanded-review .collar-review-product>.design-image{max-width:240px}
+ .order-expanded-review .collar-review-detail dt{font-size:12px}
+ .order-expanded-review .collar-review-detail dd{font-size:15px}
+ .order-expanded-review .collar-review-lettering{padding:17px}
+ .order-expanded-review .collar-review-photo img{max-height:160px}
+ .order-expanded-review .collar-review-body-edit{width:auto;min-width:128px;justify-self:end;align-self:start;padding-inline:18px}
+ .order-expanded-review .collar-review-product{gap:14px 24px}
+ .order-expanded-review .collar-review-tag{margin-top:18px;padding-top:18px}
+ .order-expanded-review .collar-review-personalization{gap:14px 24px}
+}
+@media(min-width:1200px){
+ .order-expanded-review .collar-review{margin-top:18px;gap:24px}
+ .order-expanded-review .collar-review-section-header{margin-bottom:14px}
+ .order-expanded-review .collar-review-product>.design-image{width:min(100%,250px);max-width:250px}
+ .order-expanded-review .collar-review-product{gap:14px}
+ .order-expanded-review .collar-review-configuration dl{gap:12px 18px}
+ .order-expanded-review .collar-review-personalization{gap:14px}
+ .order-expanded-review .collar-review-personalization>div>dl{gap:10px 18px}
+ .order-expanded-review .collar-review-lettering{padding:12px}
+ .order-expanded-review .collar-review-lettering .collar-review-personalization-summary{margin-bottom:10px}
+ .order-expanded-review .collar-review-lettering .collar-review-heading{margin-bottom:8px}
+ .order-expanded-review .collar-review-photo img{max-height:125px}
+ .order-expanded-review .collar-review-tag{padding-left:24px}
+}
+@media(min-width:1200px){
+ .order-expanded-review .collar-review-lettering{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:10px 14px;align-items:center}
+ .order-expanded-review .collar-review-lettering>.collar-review-heading{grid-column:1/-1;margin:0}
+ .order-expanded-review .collar-review-lettering .collar-review-personalization-summary{margin:0}
+ .order-expanded-review .collar-review-lettering-content{gap:10px}
+ .order-expanded-review .collar-review-photo img{max-height:100px}
+}
+@media(min-width:1200px) and (max-height:800px){
+ .order-expanded-review .collar-review{margin-top:12px}
+ .order-expanded-review .collar-review-product>.design-image{width:min(100%,210px);max-width:210px}
+ .order-expanded-review .collar-review-personalization>div>dl{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 12px}
+ .order-expanded-review .collar-review-detail dt{font-size:10px;margin-bottom:3px}
+ .order-expanded-review .collar-review-detail dd{font-size:13px;line-height:1.4}
+ .order-expanded-review .collar-review-personalization{gap:12px}
+ .order-expanded-review .collar-review-lettering .collar-review-personalization-summary{grid-template-columns:minmax(0,1fr)}
+ .order-expanded-review .collar-review-photo img{max-height:90px}
+ .order-expanded-review .collar-review-section-header{margin-bottom:12px}
+}
+@media(min-width:601px) and (max-width:1199px){
+ .order-expanded-review .collar-review{margin-top:18px}
+ .order-expanded-review .collar-review-product{row-gap:12px}
+ .order-expanded-review .collar-review-tag{margin-top:12px;padding-top:16px}
+}
+
+.order-expanded-review{padding:20px;min-width:0}
+.order-expanded-review .collar-review{margin-top:0}
+.order-expanded-review .collar-review-product{flex:0;justify-content:flex-start}
+.order-expanded-review .collar-review-personalization{flex:0;justify-content:flex-start}
+@media(min-width:1200px){
+ .order-expanded-review .collar-review-product>.design-image{width:min(100%,200px);max-width:200px}
+ .order-expanded-review .collar-review{gap:24px}
+}
+@media(max-width:600px){.order-expanded-review{padding:16px 12px}.order-expanded-review .collar-review-tag{margin-top:18px;padding-top:18px}}
+/* Your Order: a compact, self-contained detail with three clear information groups. */
+.order-expanded-review.order-expanded-review{padding:24px;background:rgba(255,255,255,.35);border-top:var(--border-subtle)}
+.order-expanded-review.order-expanded-review .collar-review{margin:0;gap:24px;align-items:start}
+.order-expanded-review.order-expanded-review .collar-review-section-header{margin:0 0 16px}
+.order-expanded-review.order-expanded-review .collar-review-product{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.order-expanded-review.order-expanded-review .collar-review-product>.design-image{width:100%;max-width:220px;margin:0;border-radius:10px}
+.order-expanded-review.order-expanded-review .collar-review-configuration{display:block}
+.order-expanded-review.order-expanded-review .collar-review-configuration dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.order-expanded-review.order-expanded-review .collar-review-detail dt{font-size:11px;margin-bottom:4px}
+.order-expanded-review.order-expanded-review .collar-review-detail dd{font-size:14px;line-height:1.45;overflow-wrap:anywhere}
+.order-expanded-review.order-expanded-review .collar-review-lettering{display:block;padding:16px;background:rgba(236,199,211,.12);border-radius:12px}
+.order-expanded-review.order-expanded-review .collar-review-lettering>.collar-review-heading{margin:0 0 16px}
+.order-expanded-review.order-expanded-review .collar-review-lettering .collar-review-personalization-summary{margin:0 0 16px}
+.order-expanded-review.order-expanded-review .collar-review-lettering-content{gap:12px}
+.order-expanded-review.order-expanded-review .collar-review-photo img{max-height:130px}
+@media(min-width:1200px){
+ .order-expanded-review.order-expanded-review .collar-review{grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr) minmax(0,1fr);gap:20px}
+ .order-expanded-review.order-expanded-review .collar-review>section:first-child{grid-column:1;grid-row:1/3}
+ .order-expanded-review.order-expanded-review .collar-review-tag,.order-expanded-review.order-expanded-review .collar-review-personalization{display:contents}
+ .order-expanded-review.order-expanded-review .collar-review-tag>.collar-review-section-header{grid-column:2;grid-row:1;margin:0}
+ .order-expanded-review.order-expanded-review .collar-review-personalization>div:first-child{grid-column:2;grid-row:2}
+ .order-expanded-review.order-expanded-review .collar-review-personalization>div:first-child>dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+ .order-expanded-review.order-expanded-review .collar-review-lettering-column{grid-column:3;grid-row:1/3;min-width:0}
+ .order-expanded-review.order-expanded-review .collar-review-lettering-content{grid-template-columns:minmax(0,1fr)}
+ .order-expanded-review.order-expanded-review .collar-review-photo{justify-content:flex-start}
+}
+@media(min-width:601px) and (max-width:1199px){
+ .order-expanded-review.order-expanded-review .collar-review{display:block}
+ .order-expanded-review.order-expanded-review .collar-review-product{grid-template-columns:minmax(0,.7fr) minmax(0,1fr);align-items:center}
+ .order-expanded-review.order-expanded-review .collar-review-tag{margin-top:20px;padding:20px 0 0;border-left:0}
+ .order-expanded-review.order-expanded-review .collar-review-personalization{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px}
+}
+@media(max-width:600px){
+ .order-expanded-review.order-expanded-review{padding:18px 14px}
+ .order-expanded-review.order-expanded-review .collar-review{display:block}
+ .order-expanded-review.order-expanded-review .collar-review-product{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:14px}
+ .order-expanded-review.order-expanded-review .collar-review-configuration dl{grid-template-columns:1fr;gap:10px}
+ .order-expanded-review.order-expanded-review .collar-review-tag{margin-top:20px;padding:20px 0 0}
+ .order-expanded-review.order-expanded-review .collar-review-personalization{display:flex;flex-direction:column;gap:18px}
+ .order-expanded-review.order-expanded-review .collar-review-detail dd{font-size:13px}
+}
+@media(min-width:1200px){
+ .order-expanded-review.order-expanded-review .collar-review{grid-template-rows:auto 1fr;row-gap:16px}
+}
+/* Expanded order: give facts room; personalization becomes a horizontal closing block. */
+@media(min-width:1200px){
+ .order-expanded-review.order-expanded-review{padding:28px 24px}
+ .order-expanded-review.order-expanded-review .collar-review{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);grid-template-rows:auto auto auto;gap:18px 32px}
+ .order-expanded-review.order-expanded-review .collar-review>section:first-child{grid-column:1;grid-row:1/3}
+ .order-expanded-review.order-expanded-review .collar-review-product>.design-image{max-width:240px;margin:0}
+ .order-expanded-review.order-expanded-review .collar-review-configuration dl{gap:16px 20px}
+ .order-expanded-review.order-expanded-review .collar-review-configuration .collar-review-detail:last-child{grid-column:1/-1}
+ .order-expanded-review.order-expanded-review .collar-review-personalization>div:first-child>dl{gap:18px 24px}
+ .order-expanded-review.order-expanded-review .collar-review-detail dt{font-size:12px;margin-bottom:5px}
+ .order-expanded-review.order-expanded-review .collar-review-detail dd{font-size:15px;line-height:1.5}
+ .order-expanded-review.order-expanded-review .collar-review-lettering-column{grid-column:1/-1;grid-row:3;margin-top:6px}
+ .order-expanded-review.order-expanded-review .collar-review-lettering{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:14px 32px;padding:20px 24px}
+ .order-expanded-review.order-expanded-review .collar-review-lettering>.collar-review-heading{grid-column:1/-1;margin:0}
+ .order-expanded-review.order-expanded-review .collar-review-lettering .collar-review-personalization-summary{margin:0;align-self:center}
+ .order-expanded-review.order-expanded-review .collar-review-lettering-content{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:24px}
+ .order-expanded-review.order-expanded-review .collar-review-photo{justify-content:center}
+ .order-expanded-review.order-expanded-review .collar-review-photo img{max-height:120px}
+}
+/* Your Order refinements: smaller artwork and top-aligned tag facts. */
+.flow[data-flow-step="order-summary"] .collar-collapse-label .lettering-renderer{--lettering-max-size:24}
+@media(min-width:1200px){
+ .order-expanded-review.order-expanded-review .collar-review{grid-template-rows:auto auto;row-gap:22px}
+ .order-expanded-review.order-expanded-review .collar-review>section:first-child{grid-row:1}
+ .order-expanded-review.order-expanded-review .collar-review-product>.design-image{max-width:200px}
+ .order-expanded-review.order-expanded-review .collar-review-tag>.collar-review-section-header{grid-row:1;align-self:start}
+ .order-expanded-review.order-expanded-review .collar-review-personalization>div:first-child{grid-row:1;align-self:start;padding-top:36px}
+ .order-expanded-review.order-expanded-review .collar-review-lettering-column{grid-row:2;margin-top:0}
+}
+@media(min-width:601px) and (max-width:1199px){
+ .order-expanded-review.order-expanded-review .collar-review-product>.design-image{max-width:200px}
+}
+@media(max-width:600px){
+ .flow[data-flow-step="order-summary"] .collar-collapse-label .lettering-renderer{--lettering-max-size:21}
+}
+.order-review-font-chip{display:inline-flex;margin-left:12px;padding:4px 9px;border:var(--border-subtle);border-radius:6px;font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted);vertical-align:middle}
+.order-expanded-review.order-expanded-review .collar-review-font-preview:empty{display:none}
+.order-expanded-review.order-expanded-review .collar-review-lettering-content:has(.collar-review-font-preview:empty){grid-template-columns:minmax(0,1fr)}
+.order-expanded-review.order-expanded-review .collar-review-personalization-summary{display:flex;flex-direction:column;gap:14px}
+.order-review-font-detail dt{font-size:11px;color:var(--muted);margin-bottom:4px}
+.order-review-font-detail dd{margin:0;font-size:14px;font-weight:500;color:var(--ink)}
+@media(max-width:1199px){
+ .order-expanded-review.order-expanded-review .collar-review-personalization{display:flex;flex-direction:column;align-items:stretch;gap:20px}
+ .order-expanded-review.order-expanded-review .collar-review-lettering-column{width:100%;min-width:0}
+ .order-expanded-review.order-expanded-review .collar-review-lettering{width:100%;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center}
+ .order-expanded-review.order-expanded-review .collar-review-lettering>.collar-review-heading{grid-column:1/-1;margin:0}
+ .order-expanded-review.order-expanded-review .collar-review-lettering .collar-review-personalization-summary{margin:0}
+}
+/* Step 11 — one responsive layout system; content density never shifts the start line. */
+.flow[data-flow-step="review"] .flow-content{display:flex;flex-direction:column;padding-right:16px}
+.flow[data-flow-step="review"] .collar-review{display:block;min-width:0;min-height:0;margin:24px 0 0}
+.flow[data-flow-step="review"] .collar-review>section{min-width:0}
+.flow[data-flow-step="review"] .collar-review-section-header{display:block;margin:0 0 18px}
+.flow[data-flow-step="review"] .collar-review-header-edit{display:none}
+.flow[data-flow-step="review"] .collar-review-body-edit{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin-top:16px;padding:10px 14px;box-sizing:border-box;font-size:12px}
+.flow[data-flow-step="review"] .collar-review-detail dt{font-size:11px;line-height:1.4;margin-bottom:4px}
+.flow[data-flow-step="review"] .collar-review-detail dd{font-size:14px;line-height:1.5}
+.flow[data-flow-step="review"] .collar-review-lettering{min-width:0;min-height:0;padding:17.12px;border:var(--border-subtle);border-radius:10px;background:transparent;overflow-wrap:anywhere}
+.flow[data-flow-step="review"] .collar-review-lettering>.collar-review-heading{margin:0 0 4px;font-size:10px;line-height:1.5}
+.flow[data-flow-step="review"] .collar-review-font-label{margin:0 0 8px;font-size:11px}
+.flow[data-flow-step="review"] .collar-review-lettering .collar-review-personalization-summary{margin:4px 0 0}
+.flow[data-flow-step="review"] .collar-review-lettering-content{display:contents}
+.flow[data-flow-step="review"] .collar-review-font-preview{display:contents;min-width:0;overflow:hidden}
+.flow[data-flow-step="review"] .collar-review-lettering:not(:has(.collar-review-photo,.collar-review-photo-loading)){grid-template-columns:minmax(0,1fr)}
+.flow[data-flow-step="review"] .collar-review-photo{position:static;inset:auto;display:flex;align-items:center;justify-content:center;width:100%;min-height:0;margin:0;padding:0;border-radius:6px}
+.flow[data-flow-step="review"] .collar-review-photo img{display:block;width:auto;height:auto;max-width:100%;max-height:130px;margin:auto;object-fit:contain;border-radius:4px}
+.flow[data-flow-step="review"] .collar-review-photo-loading{height:110px;margin:0;background:var(--line);border-radius:4px}
+.flow[data-flow-step="review"] .collar-review-photo:focus-visible{outline:2px solid var(--brand-pink);outline-offset:4px}
+.flow[data-flow-step="review"] .collar-review-photo-expanded{display:block;width:100%;max-height:70dvh;object-fit:contain}
+
+/* Phone: retain the proven side-by-side collar preview and stacked tag sections. */
+@media(max-width:600px){
+ .flow[data-flow-step="review"] .collar-review{margin-top:24px}
+ .flow[data-flow-step="review"] .collar-review-section-header{margin-bottom:18px}
+ .flow[data-flow-step="review"] .collar-review>section:has(>.collar-review-product)>.collar-review-section-header{margin-bottom:33.6px}
+ .flow[data-flow-step="review"] .collar-review-product{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:16px}
+ .flow[data-flow-step="review"] .collar-review-product>.design-image{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:auto;margin:0;border-radius:8px;object-fit:contain}
+ .flow[data-flow-step="review"] .collar-review-configuration{display:contents}
+ .flow[data-flow-step="review"] .collar-review-configuration>dl{min-width:0;gap:12px}
+  .flow[data-flow-step="review"] .collar-review-body-edit{grid-column:1/-1;margin-top:0;border-radius:8px}
+  .flow[data-flow-step="review"] .collar-review-lettering-column{display:contents}
+  .flow[data-flow-step="review"] .collar-review-tag-edit{grid-column:1/-1;width:100%;max-width:100%;margin-top:0}
+ .flow[data-flow-step="review"] .collar-review-tag{margin-top:24px;padding-top:24px}
+ .flow[data-flow-step="review"] .collar-review-personalization{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+ .flow[data-flow-step="review"] .collar-review-personalization>div>dl{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ .flow[data-flow-step="review"] .collar-review-detail dd{font-size:14px}
+ .flow[data-flow-step="review"] .collar-review-lettering{padding:17.12px}
+ .flow[data-flow-step="review"] .collar-review-lettering:not(:has(.collar-review-photo,.collar-review-photo-loading)){grid-template-columns:minmax(0,1fr)}
+ .flow[data-flow-step="review"] .collar-review-lettering .collar-review-personalization-summary{grid-template-columns:minmax(0,1fr);margin-top:4px}
+ .flow[data-flow-step="review"] .collar-review-photo img{max-height:130px}
+ .flow[data-flow-step="review"] .collar-review-lettering .lettering-renderer{--lettering-max-size:21}
+ .flow[data-flow-step="review"] .collar-review-tag .collar-review-personalization{row-gap:20px}
+}
+
+/* Preserve one predictable tablet shell even for the review step. */
+@media(min-width:601px) and (max-width:1199px){
+ .configurator-area:has(.flow[data-flow-step="review"]){overflow-x:hidden;overflow-y:auto}
+ .flow[data-flow-step="review"]{height:auto;min-height:0;flex:0 0 auto;margin-block:0}
+ .flow[data-flow-step="review"]>form{flex:0 0 auto;min-height:0}
+ .flow[data-flow-step="review"] .flow-content{flex:0 0 auto;min-height:0;overflow:visible;padding:2px 16px 0 2px}
+ .flow[data-flow-step="review"] .collar-review{display:block;flex:0 0 auto;min-height:0;margin:24px 0 0}
+ .flow[data-flow-step="review"] .collar-review>section{display:flex;flex:0 0 auto;flex-direction:column;min-height:0}
+ .flow[data-flow-step="review"] .collar-review-section-header{display:block;margin-bottom:33.6px}
+ .flow[data-flow-step="review"] .collar-review-header-edit{display:none}
+ .flow[data-flow-step="review"] .collar-review-tag-edit{display:flex;width:auto;min-width:128px;align-self:flex-end;justify-self:auto;margin-top:0;padding-inline:18px}
+ .flow[data-flow-step="review"] .collar-review-product{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1fr);align-items:center;gap:14px 24px}
+ .flow[data-flow-step="review"] .collar-review-product>.design-image{display:block;width:100%;max-width:240px;height:auto;aspect-ratio:auto;margin:0 auto;justify-self:center;align-self:center;border-radius:8px;object-fit:contain}
+ .flow[data-flow-step="review"] .collar-review-configuration{display:flex;flex-direction:column;align-items:stretch;min-width:0}
+ .flow[data-flow-step="review"] .collar-review-configuration>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px;min-width:0}
+ .flow[data-flow-step="review"] .collar-review-configuration>.collar-review-body-edit{display:flex;width:auto;min-width:128px;align-self:flex-end;justify-self:auto;margin-top:0;padding-inline:18px}
+ .flow[data-flow-step="review"] .collar-review-tag{margin:20px 0 0;padding:20px 0 0;border-top:var(--border-subtle);border-left:0}
+ .flow[data-flow-step="review"] .collar-review-personalization{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start;gap:14px 24px}
+ .flow[data-flow-step="review"] .collar-review-personalization>div>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px}
+ .flow[data-flow-step="review"] .collar-review-lettering-column{display:flex;flex-direction:column;align-items:stretch;min-width:0}
+ .flow[data-flow-step="review"] .collar-review-lettering{padding:17.12px}
+ .flow[data-flow-step="review"] .collar-review-lettering .lettering-renderer{--lettering-max-size:23;max-height:44px}
+ .flow[data-flow-step="review"] .collar-review-photo img{max-height:160px}
+ .flow[data-flow-step="review"] .collar-review-tag .collar-review-personalization{row-gap:20px}
+ .flow[data-flow-step="review"] .flow-actions{margin-top:18px}
+}
+
+@media(min-width:601px) and (max-width:800px){
+ #root:has(.flow[data-flow-step="review"]){height:auto;min-height:100dvh;overflow:visible}
+ #root:has(.flow[data-flow-step="review"])>footer{display:flex}
+ main.configurator-layout:has(.flow[data-flow-step="review"]){display:block;flex:none;height:auto;min-height:0;overflow:visible}
+ .configurator-layout>.configurator-area:has(.flow[data-flow-step="review"]){display:block;flex:none;width:100%;height:auto;min-height:0;overflow:visible;padding:36px 4% 12px}
+}
+
+/* Desktop: equal columns, shared content start, and image scale tied to viewport height. */
+@media(min-width:1200px){
+ .flow[data-flow-step="review"] .flow-content{padding-block:0}
+ .flow[data-flow-step="review"] .flow-content>.collar-review{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:0;flex:1 0 auto;min-height:100%;margin:0}
+ .flow[data-flow-step="review"] .collar-review>section{display:flex;flex:0 0 auto;flex-direction:column;min-width:0;min-height:100%;padding:0 28px 0 0}
+ .flow[data-flow-step="review"] .collar-review>section.collar-review-tag{margin:0;padding:0 0 0 28px;border:0;border-left:var(--border-subtle)}
+ .flow[data-flow-step="review"] .collar-review>section>.collar-review-section-header{display:flex;flex:0 0 44px;align-items:center;justify-content:space-between;gap:16px;height:44px;min-height:44px;margin:0 0 35.7px}
+ .flow[data-flow-step="review"] .collar-review-section-header>.collar-review-heading{min-width:0;margin:0}
+ .flow[data-flow-step="review"] .collar-review-header-edit{display:inline-flex;flex:0 0 112px;align-items:center;justify-content:center;width:112px;height:44px;min-height:44px;margin:0;padding:10px;box-sizing:border-box;font-size:12px;line-height:1.3}
+ .flow[data-flow-step="review"] .collar-review-body-edit{display:none}
+ .flow[data-flow-step="review"] .collar-review-product{display:flex;flex:0 0 auto;flex-direction:column;align-items:stretch;gap:18px;margin:0;padding:0;min-width:0}
+ .flow[data-flow-step="review"] .collar-review-product>.design-image{display:block;position:static;flex:0 0 auto;align-self:center;justify-self:center;width:min(94%,clamp(280px,calc(100dvh - 600px),380px));max-width:380px;height:auto;max-height:none;aspect-ratio:1;margin:0 auto;transform:none;object-fit:contain}
+ .flow[data-flow-step="review"] .collar-review-configuration{width:min(94%,clamp(280px,calc(100dvh - 600px),380px));max-width:380px;margin:0 auto;padding:0;box-sizing:border-box}
+ .flow[data-flow-step="review"] .collar-review-configuration>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:12px 20px;margin:0}
+ .flow[data-flow-step="review"] .collar-review-configuration>dl>.collar-review-detail:last-child{grid-column:1/-1}
+ .flow[data-flow-step="review"] .collar-review-tag .collar-review-personalization{display:flex;flex:0 0 auto;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:20px;margin:0;padding:0}
+ .flow[data-flow-step="review"] .collar-review-personalization>div:first-child{display:block;flex:0 0 auto;min-width:0;min-height:0;margin:0;padding:0}
+ .flow[data-flow-step="review"] .collar-review-personalization>div:first-child>dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:8px 20px;margin:0}
+ .flow[data-flow-step="review"] .collar-review-lettering-column{display:block;flex:0 0 auto;min-width:0;margin:0;padding:0;border:0}
+ .flow[data-flow-step="review"] .collar-review-lettering{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.3fr) minmax(0,.6fr);grid-template-rows:auto auto auto;align-content:start;align-items:center;gap:8px 14px;padding:12.84px;min-height:0;height:auto}
+ .flow[data-flow-step="review"] .collar-review-lettering>.collar-review-heading{grid-column:1/-1;grid-row:1;margin:0 0 4px;font-size:12px}
+ .flow[data-flow-step="review"] .collar-review-font-label{grid-column:1;grid-row:2;margin:0;font-size:12px}
+ .flow[data-flow-step="review"] .collar-review-font-preview>.lettering-renderer,.flow[data-flow-step="review"] .collar-review-font-preview>p:not(.collar-review-font-label){grid-column:1;grid-row:3;max-width:100%;max-height:58px;margin:0;--lettering-max-size:30}
+ .flow[data-flow-step="review"] .collar-review-lettering .collar-review-personalization-summary{grid-column:2;grid-row:2/4;align-self:center;margin:0;min-width:0}
+ .flow[data-flow-step="review"] .collar-review-photo,.flow[data-flow-step="review"] .collar-review-photo-loading{position:static;grid-column:3;grid-row:2/4;align-self:center;justify-self:center;max-width:100%;margin:0}
+ .flow[data-flow-step="review"] .collar-review-photo img{width:100%;height:auto;max-height:100px;object-fit:contain}
+ .flow[data-flow-step="review"] .collar-review-lettering:not(:has(.collar-review-photo,.collar-review-photo-loading)){grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+ .flow[data-flow-step="review"] .collar-review-lettering:not(:has(.collar-review-photo,.collar-review-photo-loading)) .collar-review-personalization-summary{grid-column:2;grid-row:2/4}
+}
+
+@media(min-width:1200px) and (max-height:800px){
+ .flow[data-flow-step="review"] .collar-review>section>.collar-review-section-header{height:36px;min-height:36px;flex-basis:36px;margin-bottom:33.6px}
+ .flow[data-flow-step="review"] .collar-review-product{gap:12px}
+ .flow[data-flow-step="review"] .collar-review-product>.design-image{width:min(90%,clamp(230px,calc(100dvh - 500px),340px));max-width:340px}
+ .flow[data-flow-step="review"] .collar-review-configuration{width:min(90%,clamp(230px,calc(100dvh - 500px),340px));max-width:340px}
+ .flow[data-flow-step="review"] .collar-review-configuration>dl{gap:8px 12px}
+ .flow[data-flow-step="review"] .collar-review-personalization>div:first-child>dl{row-gap:2px}
+ .flow[data-flow-step="review"] .collar-review-tag .collar-review-personalization{row-gap:10px}
+ .flow[data-flow-step="review"] .collar-review-lettering{padding:10.7px;gap:4px 10px}
+ .flow[data-flow-step="review"] .collar-review-lettering>.collar-review-heading{margin-bottom:4px;font-size:11px}
+ .flow[data-flow-step="review"] .collar-review-font-preview>.lettering-renderer{--lettering-max-size:23;max-height:44px}
+ .flow[data-flow-step="review"] .collar-review-photo img{max-height:80px}
+ .flow[data-flow-step="review"]>.flow-title{margin-bottom:0}
+ .flow[data-flow-step="review"] .flow-content{padding-bottom:0}
+}
+/* Confirmation accordion detail follows the same three-block review layout. */
+.complete .confirmed-detail{padding:var(--space-8) 0 var(--space-12)}
+.complete .confirmation-detail-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:var(--collar-detail-column-gap);row-gap:var(--space-16);align-items:start}
+.complete .confirmation-detail-grid>section{min-width:0}
+.complete .confirmation-detail-collar{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);column-gap:var(--space-16);align-items:start}
+.complete .confirmation-detail-grid h4{font-size:var(--font-size-11);letter-spacing:.16em;color:var(--brand-deep);margin:0 0 var(--space-12)}
+.complete .confirmation-detail-collar h4{grid-column:1/-1}
+.complete .confirmation-detail-collar .order-collar-image{grid-column:1;grid-row:2;float:none;width:min(100%,240px);height:auto;aspect-ratio:1;margin:0;align-self:start}
+.complete .confirmation-detail-collar .summary-facts{grid-column:2;grid-row:2;grid-template-columns:minmax(0,1fr);gap:var(--space-10) var(--space-16);min-width:0}
+.complete .confirmation-detail-collar .summary-facts>[data-fact="design"],.complete .confirmation-detail-collar .summary-facts>[data-fact="size"]{grid-column:auto}
+.complete .confirmation-detail-collar .summary-facts>[data-fact="fastening"]{grid-column:1/-1}
+.complete .confirmation-detail-tag .summary-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-12) var(--space-20)}
+.complete .confirmation-detail-tag .summary-facts>[data-fact="address"],.complete .confirmation-detail-tag .summary-facts>[data-fact="health"],.complete .confirmation-detail-tag .summary-facts>[data-fact="family"],.complete .confirmation-detail-tag .summary-facts>[data-fact="other"],.complete .confirmation-detail-tag .summary-facts>[data-fact="notes"],.complete .confirmation-detail-tag .summary-facts>[data-fact="phones"]{grid-column:1/-1}
+.complete .confirmation-detail-lettering{grid-column:1/-1;border:var(--border-subtle);border-radius:var(--collar-detail-card-radius);background:var(--surface-soft);padding:var(--space-16) var(--space-20)}
+.complete .confirmation-detail-lettering h4{margin-bottom:var(--space-10)}
+.complete .confirmation-detail-lettering .summary-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-10) var(--space-20)}
+.complete .confirmation-detail-lettering .summary-facts>[data-fact="font"]{grid-column:1/-1}
+.complete .confirmation-detail-lettering .attachment-thumbnail{display:block;width:min(220px,100%);max-height:150px;object-fit:contain;object-position:left center}
+@container confirmation (max-width:600px){
+ .complete .confirmation-detail-grid{grid-template-columns:minmax(0,1fr);row-gap:var(--space-14)}
+ .complete .confirmation-detail-collar{display:grid;grid-template-columns:minmax(96px,.7fr) minmax(0,1.3fr);align-items:start;column-gap:var(--space-14)}
+ .complete .confirmation-detail-collar h4{grid-column:1/-1;margin-bottom:var(--space-10)}
+ .complete .confirmation-detail-collar .order-collar-image{grid-column:1;grid-row:2;width:100%;max-width:170px;margin:0;align-self:start}
+ .complete .confirmation-detail-collar .summary-facts{grid-column:2;grid-row:2;grid-template-columns:minmax(0,1fr);gap:var(--space-8);min-width:0}
+ .complete .confirmation-detail-tag .summary-facts{gap:var(--space-10) var(--space-14)}
+ .complete .confirmation-detail-lettering{grid-column:1;padding:var(--space-14)}
+ .complete .confirmation-detail-lettering .summary-facts{gap:var(--space-8) var(--space-14)}
+}

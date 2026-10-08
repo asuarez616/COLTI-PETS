@@ -1,0 +1,7 @@
+import {describe,it,expect} from 'vitest';
+import {tagPreviewConfig,getTagPreviewLayout,previewFaceStyle,informationTypography} from './tagPreviewConfig';
+describe('centralized preview layouts',()=>{
+ it('defines safe front and back geometry for every model',()=>{for(const layout of Object.values(tagPreviewConfig)){for(const face of [layout.front,layout.back]){expect(face.area.left+face.area.right).toBeLessThan(100);expect(face.area.top+face.area.bottom).toBeLessThan(100);}expect(layout.width).toBeGreaterThan(0);expect(layout.maxLines).toBeGreaterThan(0);}});
+ it('preserves the model-specific visual adjustments',()=>{expect(getTagPreviewLayout('paw').back.asset).toBe('paw-back');expect(getTagPreviewLayout('paw').nameMax).toBe(44);expect(getTagPreviewLayout('bone').maxLines).toBe(3);expect(getTagPreviewLayout('bone').width/getTagPreviewLayout('circle').width).toBeCloseTo(1.2);expect(getTagPreviewLayout('anti-fall').prioritizeIcons).toBe(true);expect(previewFaceStyle(getTagPreviewLayout('paw'),'back')['--tag-top' as keyof ReturnType<typeof previewFaceStyle>]).toBe('26%');});
+ it('uses a shared restrained scale range',()=>{expect(informationTypography.scaleMin).toBe(.9);expect(informationTypography.scaleMax).toBe(1.3);});
+});
