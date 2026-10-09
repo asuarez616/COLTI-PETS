@@ -15,6 +15,7 @@ export const adminRepository:AdminRepository={
  detail:async(id)=>{const data=await rpc('admin_order',{p_id:id});return data?detail(data):null;},
  status:async(order,next,reason)=>detail(await rpc(next==='cancelled'&&reason?'admin_cancel_order':'admin_update_order',{p_id:order.id,p_updated:order.updated_at,...(next==='cancelled'&&reason?{p_reason:reason}:{p_status:next})})),
  note:async(order,note)=>detail(await rpc('admin_update_order',{p_id:order.id,p_updated:order.updated_at,p_note:note})),
+ shipping:async(order,address)=>{const value=await rpc('admin_save_shipping_address',{p_id:order.id,p_updated:order.updated_at,p_address:address});return normalizeOrder(value);},
  catalog:async()=>{const data=await rpc('admin_catalog');return {designs:data.designs.filter((d:Record<string,unknown>)=>!d.deleted).map((d:Record<string,unknown>)=>parseDesign({...d,image:imageUrl(String(d.image_path))})),overrides:data.overrides};},
  renameDesign:async(id,previous,code)=>{await rpc('admin_rename_design',{p_id:id,p_previous:previous,p_code:code});},
  deleteDesign:async(id,version)=>{await rpc('admin_delete_design',{p_id:id,p_version:version});},

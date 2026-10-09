@@ -1,5 +1,5 @@
-import {AdminError,availabilityKey,nextStatuses,validHeroConfiguration,type ProductionStatus,type ProductionDetail,type CatalogAvailability,type Availability,type HeroConfiguration,type HeroImage} from '../domain/admin';
-import {sizes,validPair,type Order} from '../domain/model';
+import {AdminError,availabilityKey,nextStatuses,productionStatus,validHeroConfiguration,validShippingAddress,type ProductionStatus,type ProductionDetail,type CatalogAvailability,type Availability,type HeroConfiguration,type HeroImage} from '../domain/admin';
+import {sizes,validPair,type Order,type ShippingAddress} from '../domain/model';
 const validAvailability=(v:Availability)=>!!v.designId&&Number.isFinite(v.width)&&v.width>=0&&Number.isSafeInteger(v.revision)&&v.revision>=0&&typeof v.enabled==='boolean'&&(v.size===undefined||typeof v.size==='string'&&(v.width===0?sizes.some(s=>s.code===v.size):validPair(v.size,v.width)));
 export interface OrderDateFilter {from?:string;to?:string}
 export interface AdminRepository {
@@ -9,6 +9,7 @@ export interface AdminRepository {
  detail(id:string):Promise<ProductionDetail|null>;
  status(order:Order,next:ProductionStatus,reason?:string):Promise<ProductionDetail>;
  note(order:Order,note:string):Promise<ProductionDetail>;
+ shipping(order:Order,address:ShippingAddress):Promise<Order>;
  catalog():Promise<CatalogAvailability>;
  renameDesign?(id:string,previous:string,code:string):Promise<void>;
  deleteDesign?(id:string,version:string):Promise<void>;
@@ -22,7 +23,7 @@ export interface HeroImageSource {load():HeroImage[]|Promise<HeroImage[]>}
 export function createAdminApplication(repository:AdminRepository,source:HeroImageSource){
  async function run<T>(work:()=>Promise<T>):Promise<T>{
   try{if(!await repository.authorized())throw new AdminError('Unauthorized');return await work();}
-  catch(e){if(e instanceof AdminError)throw e;const message=String((e as {message?:string})?.message||'');throw new AdminError(/OWNER_REQUIRED|permission denied|AUTH_REQUIRED/.test(message)?'Unauthorized':/STATE_CONFLICT/.test(message)?'Conflict':/INVALID_TRANSITION/.test(message)?'InvalidStatusTransition':/CATALOG_UNAVAILABLE/.test(message)?'CatalogUnavailable':'PersistenceError');}
+  catch(e){if(e instanceof AdminError)throw e;const message=String((e as {message?:string})?.message||'');throw new AdminError(/PGRST202|admin_save_shipping_address|shipping_address/i.test(message)?'ShippingSetupRequired':/OWNER_REQUIRED|permission denied|AUTH_REQUIRED/.test(message)?'Unauthorized':/STATE_CONFLICT/.test(message)?'Conflict':/INVALID_TRANSITION/.test(message)?'InvalidStatusTransition':/CATALOG_UNAVAILABLE/.test(message)?'CatalogUnavailable':'PersistenceError');}
  }
  return {
   authorized:repository.authorized,
@@ -31,6 +32,7 @@ export function createAdminApplication(repository:AdminRepository,source:HeroIma
   detail:(id:string)=>run(async()=>{const detail=await repository.detail(id);if(!detail)throw new AdminError('OrderNotFound');return detail;}),
   status:(order:Order,next:ProductionStatus,reason='')=>run(()=>{if(!nextStatuses(order.status).includes(next))throw new AdminError('InvalidStatusTransition');if(reason.length>1000||reason&&next!=='cancelled')throw new AdminError('PersistenceError');return repository.status(order,next,reason.trim());}),
   note:(order:Order,note:string)=>run(()=>{if(note.length>4000)throw new AdminError('PersistenceError');return repository.note(order,note);}),
+  shipping:(order:Order,address:ShippingAddress)=>run(()=>{if(!['ready','delivered'].includes(productionStatus(order.status))||!validShippingAddress(address))throw new AdminError('PersistenceError');return repository.shipping(order,address);}),
   catalog:()=>run(()=>repository.catalog()),
   renameDesign:(id:string,previous:string,code:string)=>run(()=>{const clean=code.trim().toUpperCase();if(!/^[A-Z0-9][A-Z0-9_-]{0,39}$/.test(clean)||!repository.renameDesign)throw new AdminError('PersistenceError');return repository.renameDesign(id,previous,clean);}),
   deleteDesign:(id:string,version:string)=>run(()=>{if(!id||!version||!repository.deleteDesign)throw new AdminError('PersistenceError');return repository.deleteDesign(id,version);}),

@@ -22,7 +22,8 @@ export interface Item {tag_snapshot?:import('./idTags').TagSnapshot;id:string;si
 export interface ClosureSnapshot {key:CollarType;name_en:string;name_es:string;icon:string}
 export interface Snapshot extends Item {closure_snapshot?:ClosureSnapshot;design:Omit<Design,'compatibility'>;font:FontRecord}
 export interface Customer {name:string;phone:string}
-export interface Order {id:string;order_code:string;status:Status;confirmed_at:string;updated_at:string;customer_snapshot:Customer;items:Snapshot[];demo?:boolean}
+export interface ShippingAddress {line1:string;line2:string;city:string;region:string;postalCode:string;country:string}
+export interface Order {id:string;order_code:string;status:Status;confirmed_at:string;updated_at:string;customer_snapshot:Customer;shipping_address?:ShippingAddress|null;items:Snapshot[];demo?:boolean}
 export interface Draft {version:3;draftId:string;key:string;customer:Customer;items:Item[];current:Item;step:StepId;editing:boolean}
 export const uuid = () => crypto.randomUUID();
 export const blankItem = (phone=''):Item => ({id:uuid(),size_code:'',width_cm:0,design_id:'',collar_type:'plastic_buckle',tag_type:'hanging',pet_name:'',tag_phone:phone,extra_text:'',font_number:1,personalization_type:'none',personalization_notes:'',attachments:[]});

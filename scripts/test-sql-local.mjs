@@ -105,6 +105,19 @@ try{
  equal((await db.query('select public.admin_catalog() doc')).rows[0].doc.overrides.filter(c=>c.designId===item.design_id&&[0,1.5].includes(c.width)).map(c=>c.enabled),[false,false]);
  await db.query('select public.admin_availability_batch($1::jsonb)',[JSON.stringify(bulkChanges.map(c=>({...c,enabled:true,revision:1})))]);
  await fails('select public.admin_availability_batch($1::jsonb)',[JSON.stringify([bulkChanges[0],bulkChanges[0]])]);
+ // Thermal shipping-label addresses are owner-only and use order timestamp locking.
+ const shippingOrder=(await db.query(confirm,args(randomUUID()))).rows[0].doc;
+ await asUser(owner);
+ let readyShippingOrder=(await db.query('select public.admin_update_order($1,$2,$3,null) doc',[shippingOrder.id,shippingOrder.updated_at,'in_progress'])).rows[0].doc.order;
+ readyShippingOrder=(await db.query('select public.admin_update_order($1,$2,$3,null) doc',[readyShippingOrder.id,readyShippingOrder.updated_at,'ready'])).rows[0].doc.order;
+ equal((await db.query('select public.admin_order($1) doc',[readyShippingOrder.id])).rows[0].doc.order.shipping_address,null);
+ const address={line1:'Av. República 123',line2:'',city:'Quito',region:'Pichincha',postalCode:'170135',country:'Ecuador'};
+ await asUser(userA);await fails('select public.admin_save_shipping_address($1,$2,$3::jsonb)',[readyShippingOrder.id,readyShippingOrder.updated_at,JSON.stringify(address)]);
+ await asUser(owner);
+ const labeled=(await db.query('select public.admin_save_shipping_address($1,$2,$3::jsonb) doc',[readyShippingOrder.id,readyShippingOrder.updated_at,JSON.stringify(address)])).rows[0].doc;
+ equal(labeled.shipping_address,address);
+ await fails('select public.admin_save_shipping_address($1,$2,$3::jsonb)',[readyShippingOrder.id,readyShippingOrder.updated_at,JSON.stringify(address)]);
+ await fails('select public.admin_save_shipping_address($1,$2,$3::jsonb)',[readyShippingOrder.id,labeled.updated_at,JSON.stringify({...address,line1:' '})]);
  console.log(`PASS: ${checks} PostgreSQL checks — migrations, seeds, transaction rollback, retry/conflict, RLS, uploads ownership, states, bulk availability, cancellation and 1/5/10-collar orders.`);
 }finally{await db.close();}
 

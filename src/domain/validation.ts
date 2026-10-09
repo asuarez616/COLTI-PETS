@@ -45,6 +45,7 @@ export function parseFont(v:unknown):FontRecord{
 export function parseOrder(v:unknown):Order{
  const x=record(v);ensure(id(x.id)&&id(x.order_code)&&oneOf(x.status,['new','in_progress','finished','ready','delivered','cancelled'])&&text(x.confirmed_at,100)&&Number.isFinite(Date.parse(x.confirmed_at))&&text(x.updated_at,100)&&Number.isFinite(Date.parse(x.updated_at))&&Array.isArray(x.items)&&x.items.length>=1&&x.items.length<=20);
  const items=x.items.map(v=>{const s=record(v);let closure_snapshot;if(s.closure_snapshot!==undefined){const c=record(s.closure_snapshot);ensure(c.key===s.collar_type&&text(c.name_en,100)&&text(c.name_es,100)&&text(c.icon,2000));closure_snapshot=c;}return {...parseItem(s),...(s.tag_snapshot?{tag_snapshot:s.tag_snapshot}:{}),...(closure_snapshot?{closure_snapshot}:{}),design:parseDesign({...record(s.design),compatibility:[]}),font:parseFont(s.font)};});
- return {...x,customer_snapshot:parseCustomer(x.customer_snapshot),items} as unknown as Order;
+ let shipping_address:Order['shipping_address'];if(x.shipping_address!==undefined&&x.shipping_address!==null){const a=record(x.shipping_address);ensure(text(a.line1,120)&&text(a.line2,100)&&text(a.city,80)&&text(a.region,80)&&text(a.postalCode,16)&&text(a.country,80));shipping_address={line1:a.line1,line2:a.line2,city:a.city,region:a.region,postalCode:a.postalCode,country:a.country};}
+ return {...x,customer_snapshot:parseCustomer(x.customer_snapshot),shipping_address,items} as unknown as Order;
 }
 export function parseOrderList(v:unknown):Order[]{ensure(Array.isArray(v));return v.map(parseOrder);}

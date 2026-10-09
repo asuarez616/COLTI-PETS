@@ -1,4 +1,4 @@
-import {validPair,type Design,type Order,type Status} from './model';
+import {validPair,type Design,type Order,type ShippingAddress,type Status} from './model';
 export const productionStatuses=['new','in_progress','ready','delivered','cancelled'] as const;
 export type ProductionStatus=typeof productionStatuses[number];
 export const productionStatus=(status:Status):ProductionStatus=>status==='finished'?'ready':status;
@@ -7,9 +7,10 @@ export function nextStatuses(status:Status):ProductionStatus[]{
  const next:Record<ProductionStatus,ProductionStatus[]>={new:['in_progress','cancelled'],in_progress:['new','ready','cancelled'],ready:['in_progress','delivered','cancelled'],delivered:[],cancelled:[]};
  return next[productionStatus(status)];
 }
-export type AdminErrorCode='Unauthorized'|'OrderNotFound'|'InvalidStatusTransition'|'CatalogUnavailable'|'HeroConfigurationError'|'DriveSyncError'|'PersistenceError'|'Conflict';
+export type AdminErrorCode='Unauthorized'|'OrderNotFound'|'InvalidStatusTransition'|'CatalogUnavailable'|'HeroConfigurationError'|'DriveSyncError'|'ShippingSetupRequired'|'PersistenceError'|'Conflict';
 export class AdminError extends Error {constructor(public readonly code:AdminErrorCode){super(code);}}
 export interface ProductionDetail {order:Order;note:string;cancellationReason?:string;deliveredAt?:string}
+export function validShippingAddress(value:ShippingAddress):boolean{return !!value&&[value.line1,value.line2,value.city,value.region,value.postalCode,value.country].every(v=>typeof v==='string')&&!!value.line1.trim()&&!!value.city.trim()&&!!value.country.trim()&&value.line1.length<=120&&value.line2.length<=100&&value.city.length<=80&&value.region.length<=80&&value.postalCode.length<=16&&value.country.length<=80;}
 export interface Availability {designId:string;width:number;size?:string;enabled:boolean;revision:number}
 export interface CatalogAvailability {designs:Design[];overrides:Availability[]}
 export const availabilityKey=(a:Pick<Availability,'designId'|'width'|'size'>)=>a.designId+':'+(a.size||'')+':'+a.width;
